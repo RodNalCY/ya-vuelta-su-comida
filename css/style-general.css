@@ -277,10 +277,11 @@ ol, ul {
     .audio-content{
         justify-content: center;
         position: absolute;
-        top: 90%;
+        top: 95%;
         box-shadow: none;
         overflow: hidden;
         border-radius: 20px;
+        z-index: 1;
     }
 
     .audio-properties{

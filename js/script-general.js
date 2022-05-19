@@ -1,8 +1,11 @@
 var html_global_price = "";
 
 $(document).ready(function () {
+  
   html_global_price = html_global_price + "<sup>S/ </sup><span>0.<small>00</small></span>";
   $(".price").html(html_global_price);
+  $('.audio-properties')[0].play();
+
 
   $("#btnComprar").click(function () {
     $("#mdRegistroCompra").modal("show");
