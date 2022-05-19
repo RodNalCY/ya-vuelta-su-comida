@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #28B463, #28B463 50%, #fff 50%, #fff 100%);
+    font-family:  'Chewy';
+    font-weight: bold;
+}
+
+.card-invite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    /* width: 300px; */
+    height: 440px;
+    background-color: #fff;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    
+    /* transition: 0.5s; */
+}
+
+/* .card-invite:hover{
+    width: 600px;
+} */
+
+.card-invite .imgBox{
+    position: relative;
+    min-width: 300px;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.card-invite:hover .imgBox{
+    transform: rotate(-6deg);
+}
+
+.card-invite .imgBox img{
+    width: 80%;
+}
+
+.card-invite .details{
+    position: relative;
+    min-width: 300px;
+    background: #28B463;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    color: #fff;
+}
+
+.card-invite .details::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-left: 10px solid #fff;
+}
+
+.card-invite .details h3{
+    font-weight: 200;
+    font-size: 1.9em;
+}
+.card-invite .details .title small{
+    font-weight: 200;
+    font-size: 1.4em;
+}
+
+.card-invite .details h4{
+    font-weight: 200;
+    font-size: 1.4em;
+}
+
+.card-invite .details .description p{
+    font-size: 1.0em;
+    font-weight: 200;
+}
+
+.card-invite .details .types ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.card-invite .details .types ul li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.0em;
+    font-weight: 200;
+    border: solid 1px #fff;
+    padding: 0.6em;
+}
+
+.card-invite .details .types ul li:hover{
+   background-color: #fff;
+   transition: background-color .5s;
+   color: #28B463;
+   cursor: pointer;
+}
+
+.card-invite .details .buy{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-invite .details .buy .price{
+    font-size: 2.0em;
+    font-weight: 200;
+}
+
+.card-invite .details .buy .btn-pay{
+    background: #fff;
+    padding: 0.8em 0.9em;
+    text-transform: uppercase;    
+    cursor: pointer;
+}
+
+.card-invite .details .buy .btn-pay a{
+    text-decoration: none;
+    color: #28B463;
+    font-weight: 200;
+    font-size: 1.2em;
+}
+
+.card-invite .details .buy a:hover{
+    color: #fff;
+}
+
+
+.card-invite .details .buy .btn-pay:hover{
+    background-color: #F4D03F;
+    transition: background-color .5s;
+}
+
+.img-compra{
+    width:150px;
+    height:150px;
+    border-radius:150px;
+    border-radius:150px;
+}
+
+ol, ul {
+    padding-left: 0;
+}
+

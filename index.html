@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <title>Ya vuelta, su comida</title>
+    <link rel="icon" href="https://diariolaregion.com/web/wp-content/uploads/2021/06/Juane.jpg" type="image/x-icon">    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="css/style-general.css" />
+    <script src="js/bootstrap.bundle.min.js"> </script>    
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/script-general.js"></script>
+  </head>
+  <body>
+
+    <div class="card-invite">
+        <div class="imgBox">    
+            <img src="img/el-juane.jpg" alt="El juane">        
+        </div>
+        <div class="details">
+            <div class="title">
+                <h3>Ya Vuelta, su comida                 
+                </h3>
+                <small>De la selva sus delicias</small>
+            </div>
+            <div class="description">
+                <h4>Descripción</h4>
+                <p>Lorem ipsum es el texto que se usa habitualmente en diseño gráfico o de moda en demostraciones de tipografías o de borradores.</p>
+            </div>
+            <div class="types">
+                <h4>Precios</h4>
+                <ul>
+                    <li><a id="m_economico">Economico</a></li>
+                    <li><a id="m_light">Light</a></li>
+                    <li><a id="m_ejecutivo">Ejecutivo</a></li>
+                </ul>
+
+            </div>
+            <div class="buy">
+                <div class="price">
+                    
+                </div>
+                <div class="btn-pay">
+                    <a id="btnComprar" >Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  <!-- Modal -->
+    <div class="modal fade" id="mdRegistroCompra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ya vuelta, reservar el juane</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="text-center">
+
+            <img src="https://diariolaregion.com/web/wp-content/uploads/2021/06/Juane.jpg" class="img-compra"alt="El juenecito">
+            </div>
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Celular</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <div id="emailHelp" class="form-text">Ingrese su numero de celular para poder contactarlo.</div>
+                </div>
+              </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   
+    <link rel="stylesheet" href="js/popper.min.js" />
+    <link rel="stylesheet" href="js/bootstrap.min.js" />
+    
+  </body>
+</html>
