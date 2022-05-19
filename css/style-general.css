@@ -79,7 +79,12 @@ body{
 
 .card-invite .details h3{
     font-weight: 200;
-    font-size: 1.9em;
+    font-size: 1.8em;
+    color: #F1C40F;
+    text-shadow: -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
 }
 .card-invite .details .title small{
     font-weight: 200;
@@ -89,6 +94,11 @@ body{
 .card-invite .details h4{
     font-weight: 200;
     font-size: 1.4em;
+    color: #F1C40F;
+    text-shadow: -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
 }
 
 .card-invite .details .description p{
@@ -107,12 +117,17 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.0em;
+    font-size: 1.2em;
     font-weight: 200;
-    border: solid 1px #fff;
-    padding: 0.6em;
+    padding: 0.1em;
 }
-
+.btn-border{
+    border-radius: inherit;
+}
+.btn-outline-light:hover{
+    color: #F1C40F;
+    transform: 1.5s;
+}
 .card-invite .details .types ul li:hover{
    background-color: #fff;
    transition: background-color .5s;
@@ -159,9 +174,111 @@ body{
     height:150px;
     border-radius:150px;
     border-radius:150px;
+    border: 3px solid #fff;
 }
 
 ol, ul {
     padding-left: 0;
 }
 
+.modal-content {
+    background-color: #28B463;
+}
+
+.modal-title {
+    flex: auto;
+    font-size: 1.6em;
+    color: #F1C40F;
+    text-shadow: -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+}
+
+.form-label {
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #F1C40F;
+    text-shadow: -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+}
+
+.form-text {
+     color: #fff;
+    font-weight: 200;
+}
+
+.btn-success {
+    font-size: 1.2em;
+    font-weight: 200;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .card-invite .imgBox {
+        position: absolute;
+        display: inline-block;
+        /* margin-top: 100px; */
+    }
+
+    .card-invite .imgBox img {
+        width: 100%;
+        margin-top: 40px;
+        border: 5px solid #fff;
+    }
+
+    .card-invite {
+        width: 300px;
+        height: 600px
+    }
+
+    .card-invite .details {
+        position: relative;
+        margin-top: 150px;
+        height: 465px;
+    }
+
+    .card-invite .details::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        width: 0;
+        height: 0;
+        top: 0;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid #fff;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+    }
+
+    .card-invite:hover .imgBox{
+        transform: rotate(0deg);
+    }
+    
+    .modal-title {
+        font-size: 1.4em;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

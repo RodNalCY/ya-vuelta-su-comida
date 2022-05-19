@@ -8,12 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    
+    <link rel="stylesheet" href="css/bootstrap.min.css" />    
     <link rel="stylesheet" href="css/style-general.css" />
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    
+
+
     <script src="js/bootstrap.bundle.min.js"> </script>    
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/script-general.js"></script>
+    
   </head>
   <body>
 
@@ -23,9 +27,8 @@
         </div>
         <div class="details">
             <div class="title">
-                <h3>Ya Vuelta, su comida                 
-                </h3>
-                <small>De la selva sus delicias</small>
+                <h3>Ya Vuelta, su comida !</h3>
+                <center><small>"De la selva sus delicias"</small></center> 
             </div>
             <div class="description">
                 <h4>Descripción</h4>
@@ -34,9 +37,9 @@
             <div class="types">
                 <h4>Precios</h4>
                 <ul>
-                    <li><a id="m_economico">Economico</a></li>
-                    <li><a id="m_light">Light</a></li>
-                    <li><a id="m_ejecutivo">Ejecutivo</a></li>
+                    <li><button type="button" class="btn btn-outline-light btn-border" id="m_economico">Económico</button></li>
+                    <li><button type="button" class="btn btn-outline-light btn-border" id="m_light">Light</button></li>
+                    <li><button type="button" class="btn btn-outline-light btn-border" id="m_ejecutivo">Ejecutivo</button></li>
                 </ul>
 
             </div>
@@ -44,9 +47,8 @@
                 <div class="price">
                     
                 </div>
-                <div class="btn-pay">
-                    <a id="btnComprar" >Comprar</a>
-                </div>
+                <button type="button" id="btnComprar" class="btn btn-warning animate__animated animate__pulse animate__infinite" style="color: #fff; font-weight: 200; font-size: 1.3em;">Reservar</button>
+
             </div>
         </div>
     </div>
@@ -56,18 +58,24 @@
   <!-- Modal -->
     <div class="modal fade" id="mdRegistroCompra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ya vuelta, reservar el juane</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><center> Ya vuelta, reservar el juane ! </center></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="text-center">
 
-            <img src="https://diariolaregion.com/web/wp-content/uploads/2021/06/Juane.jpg" class="img-compra"alt="El juenecito">
+            <img src="img/el-juane-form.jpg" class="img-compra"alt="El juenecito">
             </div>
             <form>
+
+              <div class="mb-3">
+                <label for="exampleInputName" class="form-label">Nombre (s)</label>
+                <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                <div id="emailHelp" class="form-text">Ingrese su nombre completo.</div>
+              </div>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -75,14 +83,14 @@
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Celular</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                  <div id="emailHelp" class="form-text">Ingrese su numero de celular para poder contactarlo.</div>
+                  <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="phoneHelp">
+                  <div id="emailHelp" class="form-text">Ingrese su numero de celular para contactarlo.</div>
                 </div>
               </form>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">Save changes</button>
+          <button type="button" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;">Comprar</button>
         </div>
       </div>
     </div>
