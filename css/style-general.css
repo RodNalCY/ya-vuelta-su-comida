@@ -215,11 +215,24 @@ ol, ul {
     font-weight: 200;
 }
 
+.audio-content{
+    justify-content: center;
+    position: absolute;
+    top: 20%;
+    box-shadow: 50px 5px 105px 0px rgb(0 0 0 / 25%);
+    overflow: hidden;
+    border-radius: 20px;
+}
+.audio-properties{
+    width: 600px;
+ }
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .card-invite .imgBox {
         position: absolute;
         display: inline-block;
+        margin-right:auto
         /* margin-top: 100px; */
     }
 
@@ -260,6 +273,20 @@ ol, ul {
     .modal-title {
         font-size: 1.4em;
     }
+
+    .audio-content{
+        justify-content: center;
+        position: absolute;
+        top: 90%;
+        box-shadow: none;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+
+    .audio-properties{
+        width: 300px;
+     }
+    
     
 }
 
