@@ -227,6 +227,22 @@ ol, ul {
     width: 600px;
  }
 
+
+ .img-metodo-pago{
+    width:150px;
+    height:150px;
+    border-radius:150px;
+    border: 3px solid #fff;
+    cursor: pointer;
+}
+
+.img-qr-pago{
+    width:370px;
+    height:auto;
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .card-invite .imgBox {
@@ -286,27 +302,42 @@ ol, ul {
 
     .audio-properties{
         width: 300px;
-     }
+    }
+
+    .img-metodo-pago {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    .img-qr-pago {
+        width: 300px;
+        height: auto;
+    }
     
     
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+    .audio-content{
+        top: 8%;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
+    .audio-content{
+        top: 5%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
+    
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
+    
 }

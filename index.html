@@ -17,11 +17,13 @@
     <script src="js/bootstrap.bundle.min.js"> </script>    
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/script-general.js"></script>
-    
+    <script src="js/fontawesome.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+
   </head>
   <body>
 
-    <div class="audio-content">
+    <div class="audio-content ">
       <audio controls class="audio-properties" id="audio-properties">
         <source src="audio/musica-selva.mp3" type="audio/mpeg">
         Tu navegador no es compatible con el audio.
@@ -39,7 +41,7 @@
             </div>
             <div class="description">
                 <h4>Descripción</h4>
-                <p>Lorem ipsum es el texto que se usa habitualmente en diseño gráfico o de moda en demostraciones de tipografías o de borradores.</p>
+                <p>Sirvase a degustar nuestras delicias regionales, el juane uno de los muchos patajes dentro de nuestra amazonia, al alcance de su paladar. Reserve su pedido en nuestra web de forma segura y disfrute en familia.</p>
             </div>
             <div class="types">
                 <h4>Precios</h4>
@@ -62,8 +64,8 @@
 
 
 
-  <!-- Modal -->
-    <div class="modal fade" id="mdRegistroCompra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- Modal Formilario-->
+  <div class="modal fade" id="mdRegistroCompra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -77,32 +79,103 @@
             <img src="img/el-juane-form.jpg" class="img-compra"alt="El juenecito">
             </div>
             <form>
+              <div class="row mb-3">
+                <div class="col-md-6 col-sm-12">
+                  <label for="exampleInputName" class="form-label">Nombre (s)</label>
+                  <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                  <div id="emailHelp" class="form-text">Ingrese su nombre completo.</div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <label for="exampleInputPassword1" class="form-label">Celular</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" aria-describedby="phoneHelp">
+                  <div id="emailHelp" class="form-text">Ingrese su numero de celular.</div>
+                </div>
+              </div>
 
               <div class="mb-3">
-                <label for="exampleInputName" class="form-label">Nombre (s)</label>
-                <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
-                <div id="emailHelp" class="form-text">Ingrese su nombre completo.</div>
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
               </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Celular</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="phoneHelp">
-                  <div id="emailHelp" class="form-text">Ingrese su numero de celular para contactarlo.</div>
-                </div>
-              </form>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">Ingrese su dirección para enviar su pedido.</div>
+              </div>                
+            </form>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;">Comprar</button>
+          <button type="button" id="btnPagar" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-money-bill-wave"></i> Pagar</button>
         </div>
       </div>
     </div>
   </div>
 
+    <!-- Modal Pagar-->
+    <div class="modal fade" id="mdMetodoPagar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><center> Ya vuelta, método de pago ! </center></h5>
+          </div>
+          <div class="modal-body">            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="text-center">  
+                 <a id="mpPlin"> <img src="img/plin.png" class="img-metodo-pago" alt="Plin"></a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="text-center">  
+                  <a id="mpYape">  <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="text-center">  
+                  <a id="mpContraEntrega"> <img src="img/contra-entrega.png" class="img-metodo-pago" alt="Contra Entrega"></a>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnIrAtrasFormulario" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+
+            <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-check"></i> Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+     <!-- Modal QR-->
+     <div class="modal fade" id="mdQRPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><center> Ya vuelta, método de pago ! </center></h5>
+          </div>
+          <div class="modal-body">            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-center">  
+                 <img src="" class="img-qr-pago" id="img-qr-pago" alt="QR">
+                </div>
+              </div>
+            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnIrAtras" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 
    
     <link rel="stylesheet" href="js/popper.min.js" />
