@@ -321,23 +321,33 @@ ol, ul {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .audio-content{
-        top: 8%;
+        top: 15%;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .audio-content{
-        top: 5%;
+        top: 15%;
     }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    
+    .audio-content{
+        top: 5%;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    
+    .audio-content{
+        top: 5%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .audio-content{
+        top: 20%;
+    }
 }
