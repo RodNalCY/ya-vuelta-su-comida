@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -56,7 +59,7 @@
                 <div class="price">
                     
                 </div>
-                <button type="button" id="btnComprar" class="btn btn-warning animate__animated animate__pulse animate__infinite" style="color: #fff; font-weight: 200; font-size: 1.3em;">Reservar</button>
+                <button type="button" id="btnReservar" class="btn btn-warning animate__animated animate__pulse animate__infinite" style="color: #fff; font-weight: 200; font-size: 1.3em;">Reservar</button>
 
             </div>
         </div>
@@ -69,52 +72,57 @@
 
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
+        
+      <form method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel"><center> Ya vuelta, reservar el juane ! </center></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="text-center">
-
             <img src="img/el-juane-form.jpg" class="img-compra"alt="El juenecito">
             </div>
-            <form>
+            <div class="row mb-3 mt-2 text-center price-selected">
+              
+            </div>
               <div class="row mb-3">
                 <div class="col-md-6 col-sm-12">
-                  <label for="exampleInputName" class="form-label">Nombre (s)</label>
-                  <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp">
+                  <label for="txtNombre" class="form-label">Nombre (s)</label>
+                  <input type="text" class="form-control" id="txtNombre" aria-describedby="nameHelp" required>
                   <div id="emailHelp" class="form-text">Ingrese su nombre completo.</div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                  <label for="exampleInputPassword1" class="form-label">Celular</label>
-                  <input type="number" class="form-control" id="exampleInputPassword1" aria-describedby="phoneHelp">
+                  <label for="txtCelular" class="form-label">Celular</label>
+                  <input type="number" class="form-control" id="txtCelular" aria-describedby="phoneHelp" maxlength="9" required>
                   <div id="emailHelp" class="form-text">Ingrese su numero de celular.</div>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="txtEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" required>
                 <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
+                <div class="resultado"></div>
               </div>
 
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="txtDireccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="txtDireccion" aria-describedby="placeHelp" required>
                 <div id="emailHelp" class="form-text">Ingrese su dirección para enviar su pedido.</div>
               </div>                
-            </form>
+            
 
         </div>
         <div class="modal-footer">
           <button type="button" id="btnPagar" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-money-bill-wave"></i> Pagar</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
 
     <!-- Modal Pagar-->
-    <div class="modal fade" id="mdMetodoPagar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="mdSelectMetodoPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -126,16 +134,28 @@
               <div class="col-md-4">
                 <div class="text-center">  
                  <a id="mpPlin"> <img src="img/plin.png" class="img-metodo-pago" alt="Plin"></a>
+                 <div class="switch-button">
+                   <input type="checkbox" name="switch-label-plin" id="switch-label-plin" class="switch-button__checkbox">
+                   <label for="switch-label-plin" class="switch-button__label"></label>
+                 </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="text-center">  
                   <a id="mpYape">  <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
+                  <div class="switch-button">
+                   <input type="checkbox" name="switch-label-yape" id="switch-label-yape" class="switch-button__checkbox">
+                   <label for="switch-label-yape" class="switch-button__label"></label>
+                  </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="text-center">  
                   <a id="mpContraEntrega"> <img src="img/contra-entrega.png" class="img-metodo-pago" alt="Contra Entrega"></a>
+                  <div class="switch-button">
+                   <input type="checkbox" name="switch-label-contra-entrega" id="switch-label-contra-entrega" class="switch-button__checkbox">
+                   <label for="switch-label-contra-entrega" class="switch-button__label"></label>
+                 </div>
                 </div>
               </div>
             </div>

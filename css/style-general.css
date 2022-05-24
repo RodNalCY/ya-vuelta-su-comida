@@ -243,6 +243,47 @@ ol, ul {
     border-radius: 10px;
 }
 
+/*BUTTON SWITCH*/
+:root {
+    --color-yellow: #F1C40F;
+    --color-white: #fff;
+    --color-button: #F1C40F;
+    --color-black: #fff;
+}
+.switch-button {
+    display: inline-block;
+}
+.switch-button .switch-button__checkbox {
+    display: none;
+}
+.switch-button .switch-button__label {
+    margin-top: 5px;
+    background-color: transparent;
+    width: 3.3rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    display: inline-block;
+    position: relative;
+    box-shadow: inset 0px 0px 0px 1px var(--color-white);
+}
+.switch-button .switch-button__label:before {
+    transition: .2s;
+    display: block;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-button);
+    content: '';
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 1px var(--color-white);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label {
+    background-color: var(--color-white);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+    transform: translateX(2rem);
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .card-invite .imgBox {
