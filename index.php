@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -131,32 +128,53 @@
           </div>
           <div class="modal-body">            
             <div class="row">
-              <div class="col-md-4">
-                <div class="text-center">  
-                 <a id="mpPlin"> <img src="img/plin.png" class="img-metodo-pago" alt="Plin"></a>
-                 <div class="switch-button">
-                   <input type="checkbox" name="switch-label-plin" id="switch-label-plin" class="switch-button__checkbox">
-                   <label for="switch-label-plin" class="switch-button__label"></label>
-                 </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="text-center">  
-                  <a id="mpYape">  <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
-                  <div class="switch-button">
-                   <input type="checkbox" name="switch-label-yape" id="switch-label-yape" class="switch-button__checkbox">
-                   <label for="switch-label-yape" class="switch-button__label"></label>
+
+              <div class="col-md-4">    
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <a id="mpPlin"> <img src="img/plin.png" class="img-metodo-pago" alt="Plin"></a>
                   </div>
                 </div>
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <div class="switch-button">
+                      <input type="checkbox" name="switch-label-plin" id="switch-label-plin" class="switch-button__checkbox">
+                      <label for="switch-label-plin" class="switch-button__label"></label>
+                    </div>
+                  </div>
+                </div>     
               </div>
+
               <div class="col-md-4">
-                <div class="text-center">  
-                  <a id="mpContraEntrega"> <img src="img/contra-entrega.png" class="img-metodo-pago" alt="Contra Entrega"></a>
-                  <div class="switch-button">
-                   <input type="checkbox" name="switch-label-contra-entrega" id="switch-label-contra-entrega" class="switch-button__checkbox">
-                   <label for="switch-label-contra-entrega" class="switch-button__label"></label>
-                 </div>
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <a id="mpYape">  <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
+                  </div>
                 </div>
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <div class="switch-button">
+                      <input type="checkbox" name="switch-label-yape" id="switch-label-yape" class="switch-button__checkbox">
+                      <label for="switch-label-yape" class="switch-button__label"></label>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+
+              <div class="col-md-4">
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <a id="mpContraEntrega"> <img src="img/contra-entrega.png" class="img-metodo-pago" alt="Contra Entrega"></a>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="text-center">  
+                    <div class="switch-button">
+                      <input type="checkbox" name="switch-label-contra-entrega" id="switch-label-contra-entrega" class="switch-button__checkbox">
+                      <label for="switch-label-contra-entrega" class="switch-button__label"></label>
+                    </div>
+                  </div>
+                </div> 
               </div>
             </div>
   

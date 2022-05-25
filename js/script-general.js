@@ -24,8 +24,8 @@ $(document).ready(function () {
   $(".price-selected").html(
     "<h2 style='color: #fff;'> <sup>S/ </sup><span>0.<small>00</small></span> </h2>"
   );
+  
   $("#btnReservar").prop("disabled", true);
-
   // $("#mdSelectMetodoPago").modal("show");
   // $('.audio-properties')[0].play();
 
@@ -115,7 +115,8 @@ $(document).ready(function () {
     } else {
       $.ajax({
         type: "POST",
-        url: "/services/post-email.php",
+        // url: "/services/post-email.php",
+        url: "https://verificar-email.leoncioprado.com/",
         data: parametros,
         beforeSend: function (data) {
           $(".resultado").html(
@@ -126,6 +127,7 @@ $(document).ready(function () {
         success: function (datos) {
           $(".resultado").html("");
           var result = JSON.parse(datos);
+          console.log("RDX> ", result);
           if (result.validated) {
             Swal.fire({
               icon: "success",

@@ -355,6 +355,10 @@ ol, ul {
         width: 300px;
         height: auto;
     }
+
+    .switch-button .switch-button__label {
+        margin-top: -10px;
+    }
     
     
 }
