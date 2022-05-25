@@ -206,8 +206,23 @@ ol, ul {
 }
 
 .form-text {
-     color: #fff;
+    color: #fff;
     font-weight: 200;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+}
+
+.txt-progress-bar{
+    width:100%;
+    font-weight: 100; 
+    font-size: 1.0rem;
+    color: #fff;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
 }
 
 .btn-success {
@@ -282,6 +297,41 @@ ol, ul {
 }
 .switch-button .switch-button__checkbox:checked + .switch-button__label:before {
     transform: translateX(2rem);
+}
+
+.txt-font-contenido{
+    color: #fff !important;
+    text-shadow: -1px 1px 0 transparent,
+    1px 1px 0 transparent,
+    1px -1px 0 transparent,
+    -1px -1px 0 transparent !important;
+}
+
+.txt-mensaje{
+    color: #fff !important;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000 !important;
+    font-weight: 100 !important;
+}
+
+.txt-aviso{
+    color: #fff !important;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000 !important;
+    font-weight: 100 !important;
+}
+
+.txt-price-selected{
+    color: #fff;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000 !important;
+    font-weight: 100 !important;
 }
 
 /* Extra small devices (phones, 600px and down) */
