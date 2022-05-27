@@ -72,7 +72,7 @@ $(document).ready(function () {
     // console.log("content-price-selected: ", r_price_selected);
   });
 
-  $("#btnPagar").click(function () {
+  $("#btnContinuar").click(function () {
     r_global_nombre = $("#txtNombre").val();
     r_global_celular = $("#txtCelular").val();
     r_global_email = $("#txtEmail").val();
@@ -180,6 +180,14 @@ $(document).ready(function () {
     );
     $("#contentfileVoucher"). css("display", "block");
     $("#contentVuelto"). css("display", "none");
+
+    r_global_medio_pago_plin = "PLIN";
+    r_global_medio_pago_yape = "";
+    r_global_medio_pago_contra_entrega = "";
+    console.log("PLIN:" +r_global_medio_pago_plin);
+    console.log("YAPE:" +r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
+
   });
 
   $("#mpYape").click(function () {
@@ -193,6 +201,15 @@ $(document).ready(function () {
     );
     $("#contentfileVoucher"). css("display", "block");
     $("#contentVuelto"). css("display", "none");
+
+    r_global_medio_pago_plin = "";
+    r_global_medio_pago_yape = "YAPE";
+    r_global_medio_pago_contra_entrega = "";
+    console.log("PLIN:" +r_global_medio_pago_plin);
+    console.log("YAPE:" +r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
+
+    
   });
 
   $("#mpContraEntrega").click(function () {
@@ -206,6 +223,14 @@ $(document).ready(function () {
     );
     $("#contentfileVoucher"). css("display", "none");
     $("#contentVuelto"). css("display", "block");
+
+    r_global_medio_pago_plin = "";
+    r_global_medio_pago_yape = "";
+    r_global_medio_pago_contra_entrega = "EFECTIVO";
+    console.log("PLIN:" +r_global_medio_pago_plin);
+    console.log("YAPE:" +r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
+    
   });
 
   /** BOTON PARA CALCULAR EL VUELTO */
@@ -245,52 +270,19 @@ $(document).ready(function () {
   });
 
 
-  $("#switch-label-plin").click(function () {	 
-		var status_switch_plin = $('input:checkbox[name=switch-label-plin]:checked').val();   
-    if(status_switch_plin == true || status_switch_plin=="on"){
-      r_global_medio_pago_plin = "PLIN";
-      // console.log("Plin> ", r_global_medio_pago_plin);
-    }else{
-      r_global_medio_pago_plin = "";
-      // console.log("Plin> ", r_global_medio_pago_plin);
-    }
-	});
-
-  $("#switch-label-yape").click(function () {	 
-		var status_switch_yape = $('input:checkbox[name=switch-label-yape]:checked').val();   
-    if(status_switch_yape == true || status_switch_yape=="on"){
-      r_global_medio_pago_yape = "YAPE";
-      // console.log("Plin> ", r_global_medio_pago_yape);
-    }else{
-      r_global_medio_pago_yape = "";
-      // console.log("Plin> ", r_global_medio_pago_yape);
-    }
-	});
-
-  $("#switch-label-contra-entrega").click(function () {	 
-		var status_switch_contra_entrega = $('input:checkbox[name=switch-label-contra-entrega]:checked').val();   
-    if(status_switch_contra_entrega == true || status_switch_contra_entrega=="on"){
-      r_global_medio_pago_contra_entrega = "CONTRA ENTREGA";
-      // console.log("Plin> ", r_global_medio_pago_contra_entrega);
-    }else{
-      r_global_medio_pago_contra_entrega = "";
-      // console.log("Plin> ", r_global_medio_pago_contra_entrega);
-    }
-	});
-
-
 
   $("#btnFinalizarCompra").click(function () {
-    console.log("Nombre:"+r_global_nombre);
-    console.log("Celular:"+r_global_celular);
-    console.log("Email:" +r_global_email);
-    console.log("Direccion:" +r_global_direccion);
-    console.log("Price:" +r_price_selected);
+    console.log("NOMBRES Y APELLIDOS:"+r_global_nombre);
+    console.log("CELULAR:"+r_global_celular);
+    console.log("EMAIL:" +r_global_email);
+    console.log("DIRECCION:" +r_global_direccion);
+    
 
     console.log("PLIN:" +r_global_medio_pago_plin);
     console.log("YAPE:" +r_global_medio_pago_yape);
     console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
 
+    console.log("PRECIO SELECCIONADO:" +r_price_selected);
     console.log("MONTO INGRESADO:" +r_global_monto_ingresado);
     console.log("MONTO VUELTO:" +r_global_monto_vuelto);
 

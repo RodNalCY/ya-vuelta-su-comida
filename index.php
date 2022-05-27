@@ -89,33 +89,33 @@
             <div class="row mb-3">
               <div class="col-md-6 col-sm-12">
                 <label for="txtNombre" class="form-label">Nombre (s)</label>
-                <input type="text" class="form-control" id="txtNombre" aria-describedby="nameHelp" required>
+                <input type="text" class="form-control" id="txtNombre" aria-describedby="nameHelp" required placeholder="Nombres y Apellidos">
                 <div id="emailHelp" class="form-text">Ingrese su nombre completo.</div>
               </div>
               <div class="col-md-6 col-sm-12">
                 <label for="txtCelular" class="form-label">Celular</label>
-                <input type="number" class="form-control" id="txtCelular" aria-describedby="phoneHelp" maxlength="9" required>
+                <input type="number" class="form-control" id="txtCelular" aria-describedby="phoneHelp" maxlength="9" required placeholder="999 999 999">
                 <div id="emailHelp" class="form-text">Ingrese su numero de celular.</div>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="txtEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" required>
+              <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" required placeholder="email@gmail.com">
               <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
               <div class="resultado"></div>
             </div>
 
             <div class="mb-3">
               <label for="txtDireccion" class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="txtDireccion" aria-describedby="placeHelp" required>
+              <input type="text" class="form-control" id="txtDireccion" aria-describedby="placeHelp" required placeholder="Mi dirección actual">
               <div id="emailHelp" class="form-text">Ingrese su dirección para enviar su pedido.</div>
             </div>
 
 
           </div>
           <div class="modal-footer">
-            <button type="button" id="btnPagar" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-money-bill-wave"></i> Pagar</button>
+            <button type="button" id="btnContinuar" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-right"></i> Continuar</button>
           </div>
         </form>
       </div>
@@ -141,14 +141,6 @@
                   <a id="mpPlin"> <img src="img/plin.png" class="img-metodo-pago" alt="Plin"></a>
                 </div>
               </div>
-              <div class="col-sm-12">
-                <div class="text-center">
-                  <div class="switch-button">
-                    <input type="checkbox" name="switch-label-plin" id="switch-label-plin" class="switch-button__checkbox">
-                    <label for="switch-label-plin" class="switch-button__label"></label>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div class="col-md-4">
@@ -156,29 +148,13 @@
                 <div class="text-center">
                   <a id="mpYape"> <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
                 </div>
-              </div>
-              <div class="col-sm-12">
-                <div class="text-center">
-                  <div class="switch-button">
-                    <input type="checkbox" name="switch-label-yape" id="switch-label-yape" class="switch-button__checkbox">
-                    <label for="switch-label-yape" class="switch-button__label"></label>
-                  </div>
-                </div>
-              </div>
+              </div>              
             </div>
 
             <div class="col-md-4">
               <div class="col-sm-12">
                 <div class="text-center">
                   <a id="mpContraEntrega"> <img src="img/contra-entrega.png" class="img-metodo-pago" alt="Contra Entrega"></a>
-                </div>
-              </div>
-              <div class="col-sm-12">
-                <div class="text-center">
-                  <div class="switch-button">
-                    <input type="checkbox" name="switch-label-contra-entrega" id="switch-label-contra-entrega" class="switch-button__checkbox">
-                    <label for="switch-label-contra-entrega" class="switch-button__label"></label>
-                  </div>
                 </div>
               </div>
             </div>
@@ -188,7 +164,7 @@
         <div class="modal-footer">
           <button type="button" id="btnIrAtrasFormulario" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
 
-          <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-check"></i> Finalizar</button>
+          <!-- <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-check"></i> Finalizar</button> -->
         </div>
       </div>
     </div>
@@ -218,26 +194,25 @@
               <div class="mb-3" id="contentVuelto">
                 <div class="input-group">
                   <span class="input-group-text">S/</span>
-                  <input type="number" class="form-control" id="txtMontoIngresado" placeholder="monto ingresado S/0.0">
-                  <input type="number" class="form-control" id="txtMontoVuelto" placeholder="monto a devolver S/0.0">
+                  <input type="number" class="form-control" id="txtMontoIngresado" placeholder="Ingresar monto">
+                  <input type="number" class="form-control" id="txtMontoVuelto" placeholder="Su vuelto" disabled>
                 </div>
               </div>
               <div class="text-center">
                 <img src="" class="img-qr-pago" id="img-qr-pago" alt="QR">
               </div>
             </div>
-            <div class="col-md-12 mt-2">
-              <center>
-                <button type="button" id="btnSubirVoucher" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
-              </center>
-            </div>
             <div class="col-md-12 mt-4">
-              <p class="txt-aviso">Ojo:  Si desea pagar despues de recoger el pedido y no lo quiere cancelar ahora, solo marque el medio de pago que va utilizar, yendo a la página anterior.</p>
-            </div>
+              <p class="txt-aviso">Ojo:  Si desea pagar después de recoger el pedido y no lo quiere cancelar ahora, solo ingrese al medio de pago que va utilizar y pulse el boton finalizar.</p>
+            </div>            
+            
+
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" id="btnIrAtras" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+        <div class="modal-footer">          
+          <button type="button" id="btnIrAtras" class="btn btn-danger btn-lg" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+
+          <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i>  Finalizar</button>
         </div>
       </div>
     </div>
