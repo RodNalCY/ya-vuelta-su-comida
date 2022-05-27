@@ -286,14 +286,43 @@ $(document).ready(function () {
     console.log("MONTO INGRESADO:" +r_global_monto_ingresado);
     console.log("MONTO VUELTO:" +r_global_monto_vuelto);
 
+    var r_parametros = {
+      r_name_lastname   : r_global_nombre,
+      r_phone           : r_global_celular,
+      r_email           : r_global_email,
+      r_place           : r_global_direccion,
+      r_medio_plin      : r_global_medio_pago_plin,
+      r_medio_yape      : r_global_medio_pago_yape,
+      r_medio_efectivo  : r_global_medio_pago_contra_entrega,
+      r_product_price   : r_price_selected,
+      r_monto_ingresado : r_global_monto_ingresado,
+      r_monto_vuelto    : r_global_monto_vuelto,
+    };
 
-    $("#mdSelectMetodoPago").modal("hide");
-    Swal.fire({
-      icon: "success",
-      title: "Uy, bien!",
-      text: "reserva realizada con Exito",
-      showConfirmButton: false,
-      timer: 2000,
+    $.ajax({
+      type: "POST",
+      url: "/services/send-email.php",
+      data: r_parametros,
+      beforeSend: function (data) {},
+      complete: function (data) {},
+      success: function (datos) {
+        var result = JSON.parse(datos);   
+        console.log("Send Email> ", result);
+        Swal.fire({
+          icon: "success",
+          title: "Uy, bien!",
+          text: "reserva realizada con Exito",
+          showConfirmButton: false,
+          timer: 2000,
+        });    
+      },
+      error: function (data) {
+        console.log("Error:", data);
+      },
     });
+
+
+    // $("#mdSelectMetodoPago").modal("hide");
+    
   });
 });
