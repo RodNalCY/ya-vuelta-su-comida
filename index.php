@@ -25,12 +25,12 @@
 
 <body>
 
-  <div class="audio-content ">
+  <!-- <div class="audio-content ">
     <audio controls class="audio-properties" id="audio-properties">
       <source src="audio/musica-selva.mp3" type="audio/mpeg">
       Tu navegador no es compatible con el audio.
     </audio>
-  </div>
+  </div> -->
 
   <div class="card-invite">
     <div class="imgBox">
@@ -99,12 +99,23 @@
               </div>
             </div>
 
-            <div class="mb-3">
-              <label for="txtEmail" class="form-label">Email</label>
+            <div class="row g-2 align-items-center">
+              <div class="col-auto">
+                <label for="txtEmail" class="form-label">Email</label>
+              </div>
+              <div class="col-auto">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="swExistCorreo">
+                  <label class="form-check-label form-text" for="swExistCorreo">&#10140; Si no tienes marca la casilla</label>
+                </div>
+              </div>
               <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" required placeholder="email@gmail.com">
-              <div id="emailHelp" class="form-text">Ingrese su correo para confirmar el pedido.</div>
-              <div class="resultado"></div>
+                <div id="emailHelp" class="form-text">Ingrese su correo para enviar su recibo de compra.</div>
+                <div class="resultado mb-3"></div>
             </div>
+
+
+            
 
             <div class="mb-3">
               <label for="txtDireccion" class="form-label">Dirección</label>
@@ -148,7 +159,7 @@
                 <div class="text-center">
                   <a id="mpYape"> <img src="img/yape.png" class="img-metodo-pago" alt="Yape"></a>
                 </div>
-              </div>              
+              </div>
             </div>
 
             <div class="col-md-4">
@@ -203,16 +214,16 @@
               </div>
             </div>
             <div class="col-md-12 mt-4">
-              <p class="txt-aviso">Ojo:  Si desea pagar después de recoger el pedido y no lo quiere cancelar ahora, solo ingrese al medio de pago que va utilizar y pulse el boton finalizar.</p>
-            </div>            
-            
+              <p class="txt-aviso">Ojo: Si desea pagar después de recoger el pedido y no lo quiere cancelar ahora, solo ingrese al medio de pago que va utilizar y pulse el boton finalizar.</p>
+            </div>
+
 
           </div>
         </div>
-        <div class="modal-footer">          
+        <div class="modal-footer">
           <button type="button" id="btnIrAtras" class="btn btn-danger btn-lg" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
 
-          <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i>  Finalizar</button>
+          <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i> Finalizar</button>
         </div>
       </div>
     </div>

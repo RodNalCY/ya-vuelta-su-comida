@@ -11,9 +11,11 @@ var r_global_medio_pago_contra_entrega = "";
 var r_global_monto_ingresado = 0;
 var r_global_monto_vuelto = 0;
 
+var r_user_has_email = true;
+
 $(document).ready(function () {
   r_price_selected = 0;
-  
+
   r_global_nombre = "";
   r_global_celular = "";
   r_global_email = "";
@@ -30,7 +32,7 @@ $(document).ready(function () {
   $(".content-price-selected").html(
     "<h2 style='color: #fff;'> <sup>S/ </sup><span>0.<small>00</small></span> </h2>"
   );
-  
+
   $("#btnReservar").prop("disabled", true);
   // $("#mdSelectMetodoPago").modal("show");
   // $('.audio-properties')[0].play();
@@ -76,7 +78,7 @@ $(document).ready(function () {
     r_global_nombre = $("#txtNombre").val();
     r_global_celular = $("#txtCelular").val();
     r_global_email = $("#txtEmail").val();
-    r_global_direccion = $("#txtDireccion").val();    
+    r_global_direccion = $("#txtDireccion").val();
 
     var parametros = {
       email: r_global_email,
@@ -100,7 +102,7 @@ $(document).ready(function () {
         showConfirmButton: false,
         timer: 2000,
       });
-    } else if (r_global_email == "") {
+    } else if (r_global_email == "" && r_user_has_email == true) {
       // console.log("Ingrese su email.");
       Swal.fire({
         icon: "warning",
@@ -119,46 +121,59 @@ $(document).ready(function () {
         timer: 2000,
       });
     } else {
-      $.ajax({
-        type: "POST",
-        // url: "/services/post-email.php",
-        url: "https://verificar-email.leoncioprado.com/",
-        data: parametros,
-        beforeSend: function (data) {
-          $(".resultado").html(
-            '<div class="progress mt-2"><div class="progress-bar progress-bar-striped active bg-warning txt-progress-bar" role="progressbar"  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">Validando email</div></div>'
-          );
-        },
-        complete: function (data) {},
-        success: function (datos) {
-          $(".resultado").html("");
-          var result = JSON.parse(datos);
-          console.log("email verificado > ", result);
-          if (result.validated) {
-            Swal.fire({
-              icon: "success",
-              title: "Ya, vuelta!",
-              text: "Email verificado correctamente !",
-              showConfirmButton: false,
-              timer: 2000,
-            });
+      // VALIDAR SI EL USUARIO TIENE CORREO
+      if (r_user_has_email) {
+        $.ajax({
+          type: "POST",
+          // url: "/services/post-email.php",
+          url: "https://verificar-email.leoncioprado.com/",
+          data: parametros,
+          beforeSend: function (data) {
+            $(".resultado").html(
+              '<div class="progress mt-2"><div class="progress-bar progress-bar-striped active bg-warning txt-progress-bar" role="progressbar"  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">Validando email</div></div>'
+            );
+          },
+          complete: function (data) {},
+          success: function (datos) {
+            $(".resultado").html("");
+            var result = JSON.parse(datos);
+            console.log("email verificado > ", result);
+            if (result.validated) {
+              Swal.fire({
+                icon: "success",
+                title: "Ya, vuelta!",
+                text: "Datos verificados correctamente !",
+                showConfirmButton: false,
+                timer: 2000,
+              });
 
-            $("#mdRegistroCompra").modal("hide");
-            $("#mdSelectMetodoPago").modal("show");
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Ya, vuelta!",
-              text: "Email no existe !",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-          }
-        },
-        error: function (data) {
-          console.log("Error:", data);
-        },
-      });
+              $("#mdRegistroCompra").modal("hide");
+              $("#mdSelectMetodoPago").modal("show");
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Ya, vuelta!",
+                text: "Email no existe !",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          },
+          error: function (data) {
+            console.log("Error:", data);
+          },
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Ya, vuelta!",
+          text: "Datos verificados correctamente !",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        $("#mdRegistroCompra").modal("hide");
+        $("#mdSelectMetodoPago").modal("show");
+      }
     }
   });
 
@@ -172,92 +187,96 @@ $(document).ready(function () {
   $("#mpPlin").click(function () {
     // console.log("Plin");
     $("#mdSelectMetodoPago").modal("hide");
-    $("#mdQRPago").modal("show");    
-    $("#txt-medio").html("<span>Saludos ñañito(a)! Usted eligio pagar por PLIN. Si desea pagar ahora, debe adjuntar su voucher de pago en formato imagen. <br> Precio seleccionado: S/ "+r_price_selected+".00</span>");
-    $("#img-qr-pago").attr(
-      "src",
-      "img/qr-plin.jpeg"
+    $("#mdQRPago").modal("show");
+    $("#txt-medio").html(
+      "<span>Saludos ñañito(a)! Usted eligio pagar por PLIN. Si desea pagar ahora, debe adjuntar su voucher de pago en formato imagen. <br> Precio seleccionado: S/ " +
+        r_price_selected +
+        ".00</span>"
     );
-    $("#contentfileVoucher"). css("display", "block");
-    $("#contentVuelto"). css("display", "none");
+    $("#img-qr-pago").attr("src", "img/qr-plin.jpeg");
+    $("#contentfileVoucher").css("display", "block");
+    $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "PLIN";
     r_global_medio_pago_yape = "";
     r_global_medio_pago_contra_entrega = "";
-    console.log("PLIN:" +r_global_medio_pago_plin);
-    console.log("YAPE:" +r_global_medio_pago_yape);
-    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
-
+    console.log("PLIN:" + r_global_medio_pago_plin);
+    console.log("YAPE:" + r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
   });
 
   $("#mpYape").click(function () {
     // console.log("Yape");
     $("#mdSelectMetodoPago").modal("hide");
     $("#mdQRPago").modal("show");
-    $("#txt-medio").html("<span>Saludos ñañito(a)! Usted eligio pagar por YAPE. Si desea pagar ahora, debe adjuntar su voucher de pago en formato imagen. <br> Precio seleccionado: S/ "+r_price_selected+".00</span>");
-    $("#img-qr-pago").attr(
-      "src",
-      "img/qr-yape.jpeg"
+    $("#txt-medio").html(
+      "<span>Saludos ñañito(a)! Usted eligio pagar por YAPE. Si desea pagar ahora, debe adjuntar su voucher de pago en formato imagen. <br> Precio seleccionado: S/ " +
+        r_price_selected +
+        ".00</span>"
     );
-    $("#contentfileVoucher"). css("display", "block");
-    $("#contentVuelto"). css("display", "none");
+    $("#img-qr-pago").attr("src", "img/qr-yape.jpeg");
+    $("#contentfileVoucher").css("display", "block");
+    $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "";
     r_global_medio_pago_yape = "YAPE";
     r_global_medio_pago_contra_entrega = "";
-    console.log("PLIN:" +r_global_medio_pago_plin);
-    console.log("YAPE:" +r_global_medio_pago_yape);
-    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
-
-    
+    console.log("PLIN:" + r_global_medio_pago_plin);
+    console.log("YAPE:" + r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
   });
 
   $("#mpContraEntrega").click(function () {
     // console.log("Contra Entrega");
     $("#mdSelectMetodoPago").modal("hide");
     $("#mdQRPago").modal("show");
-    $("#txt-medio").html("<span>Saludos ñañito(a)! Usted eligio pagar en efectivo. Ingrese con cuanto pagará para llevar su vuelto!<br> Precio seleccionado: S/ "+r_price_selected+".00</span>");    
-    $("#img-qr-pago").attr(
-      "src",
-      "img/contra-entrega.png"
+    $("#txt-medio").html(
+      "<span>Saludos ñañito(a)! Usted eligio pagar en efectivo. Ingrese con cuanto pagará para llevar su vuelto!<br> Precio seleccionado: S/ " +
+        r_price_selected +
+        ".00</span>"
     );
-    $("#contentfileVoucher"). css("display", "none");
-    $("#contentVuelto"). css("display", "block");
+    $("#img-qr-pago").attr("src", "img/contra-entrega.png");
+    $("#contentfileVoucher").css("display", "none");
+    $("#contentVuelto").css("display", "block");
 
     r_global_medio_pago_plin = "";
     r_global_medio_pago_yape = "";
     r_global_medio_pago_contra_entrega = "EFECTIVO";
-    console.log("PLIN:" +r_global_medio_pago_plin);
-    console.log("YAPE:" +r_global_medio_pago_yape);
-    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
-    
+    console.log("PLIN:" + r_global_medio_pago_plin);
+    console.log("YAPE:" + r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
   });
 
   /** BOTON PARA CALCULAR EL VUELTO */
   $("#txtMontoIngresado").keyup(function (e) {
     // r_price_selected = 15;
-    // r_global_monto_ingresado = $(this).val();       
+    // r_global_monto_ingresado = $(this).val();
 
     // console.log("PS > ", r_price_selected);
     // console.log("MI > ", r_global_monto_ingresado);
     // console.log(r_global_monto_vuelto);
 
-    r_global_monto_ingresado = $(this).val();   
-    setInterval(() => r_global_monto_ingresado = $("#txtMontoIngresado").val(), 1500);
+    r_global_monto_ingresado = $(this).val();
+    setInterval(
+      () => (r_global_monto_ingresado = $("#txtMontoIngresado").val()),
+      1500
+    );
 
-    r_global_monto_vuelto = (r_global_monto_ingresado - r_price_selected).toFixed(2)
+    r_global_monto_vuelto = (
+      r_global_monto_ingresado - r_price_selected
+    ).toFixed(2);
 
-    if(r_global_monto_ingresado==0 || r_global_monto_ingresado==""){
+    if (r_global_monto_ingresado == 0 || r_global_monto_ingresado == "") {
       $("#txtMontoVuelto").val("0.00");
-    }else if(r_global_monto_ingresado < r_price_selected || r_global_monto_ingresado == r_price_selected){
-      $("#txtMontoVuelto").val("0.00");      
-    }else{
+    } else if (
+      r_global_monto_ingresado < r_price_selected ||
+      r_global_monto_ingresado == r_price_selected
+    ) {
+      $("#txtMontoVuelto").val("0.00");
+    } else {
       $("#txtMontoVuelto").val(r_global_monto_vuelto);
     }
-   
- });
-
-  
+  });
 
   $("#btnIrAtras").click(function () {
     $("#mdSelectMetodoPago").modal("show");
@@ -269,60 +288,75 @@ $(document).ready(function () {
     $("#mdSelectMetodoPago").modal("hide");
   });
 
-
+  $("#swExistCorreo").on("click", function () {
+    if ($(this).is(":checked")) {
+      r_user_has_email = false;
+      $("#txtEmail").val("");
+      $("#txtEmail").prop("disabled", true);
+    } else {
+      r_user_has_email = true;
+      $("#txtEmail").prop("disabled", false);
+    }
+    console.log("Has Email > ", r_user_has_email);
+  });
 
   $("#btnFinalizarCompra").click(function () {
-    console.log("NOMBRES Y APELLIDOS:"+r_global_nombre);
-    console.log("CELULAR:"+r_global_celular);
-    console.log("EMAIL:" +r_global_email);
-    console.log("DIRECCION:" +r_global_direccion);
-    
+    console.log("/////////////////////////////////////////////");
+    console.log("NOMBRES Y APELLIDOS:" + r_global_nombre);
+    console.log("CELULAR:" + r_global_celular);
+    console.log("TIENE EMAIL: " + r_user_has_email);
+    console.log("EMAIL: " + r_global_email);
+    console.log("DIRECCION:" + r_global_direccion);
 
-    console.log("PLIN:" +r_global_medio_pago_plin);
-    console.log("YAPE:" +r_global_medio_pago_yape);
-    console.log("CONTRA ENTREGA:" +r_global_medio_pago_contra_entrega);
+    console.log("PLIN:" + r_global_medio_pago_plin);
+    console.log("YAPE:" + r_global_medio_pago_yape);
+    console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
 
-    console.log("PRECIO SELECCIONADO:" +r_price_selected);
-    console.log("MONTO INGRESADO:" +r_global_monto_ingresado);
-    console.log("MONTO VUELTO:" +r_global_monto_vuelto);
+    console.log("PRECIO SELECCIONADO:" + r_price_selected);
+    console.log("MONTO INGRESADO:" + r_global_monto_ingresado);
+    console.log("MONTO VUELTO:" + r_global_monto_vuelto);
+    console.log("/////////////////////////////////////////////");
 
-    var r_parametros = {
-      r_name_lastname   : r_global_nombre,
-      r_phone           : r_global_celular,
-      r_email           : r_global_email,
-      r_place           : r_global_direccion,
-      r_medio_plin      : r_global_medio_pago_plin,
-      r_medio_yape      : r_global_medio_pago_yape,
-      r_medio_efectivo  : r_global_medio_pago_contra_entrega,
-      r_product_price   : r_price_selected,
-      r_monto_ingresado : r_global_monto_ingresado,
-      r_monto_vuelto    : r_global_monto_vuelto,
-    };
+    if (r_user_has_email == true && r_global_email != "") {
+      console.log("Email Enviado");
+      var r_parametros = {
+        r_name_lastname: r_global_nombre,
+        r_phone: r_global_celular,
+        r_email: r_global_email,
+        r_place: r_global_direccion,
+        r_medio_plin: r_global_medio_pago_plin,
+        r_medio_yape: r_global_medio_pago_yape,
+        r_medio_efectivo: r_global_medio_pago_contra_entrega,
+        r_product_price: r_price_selected,
+        r_monto_ingresado: r_global_monto_ingresado,
+        r_monto_vuelto: r_global_monto_vuelto,
+      };
 
-    $.ajax({
-      type: "POST",
-      url: "/services/send-email.php",
-      data: r_parametros,
-      beforeSend: function (data) {},
-      complete: function (data) {},
-      success: function (datos) {
-        var result = JSON.parse(datos);   
-        console.log("Send Email> ", result);
-        Swal.fire({
-          icon: "success",
-          title: "Uy, bien!",
-          text: "reserva realizada con Exito",
-          showConfirmButton: false,
-          timer: 2000,
-        });    
-      },
-      error: function (data) {
-        console.log("Error:", data);
-      },
-    });
-
+      $.ajax({
+        type: "POST",
+        url: "/services/send-email.php",
+        data: r_parametros,
+        beforeSend: function (data) {},
+        complete: function (data) {},
+        success: function (datos) {
+          var result = JSON.parse(datos);
+          console.log("Send Email> ", result);
+          Swal.fire({
+            icon: "success",
+            title: "Uy, bien!",
+            text: "reserva realizada con Exito",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        },
+        error: function (data) {
+          console.log("Error:", data);
+        },
+      });
+    } else {
+      console.log("Celular Enviado");
+    }
 
     // $("#mdSelectMetodoPago").modal("hide");
-    
   });
 });
