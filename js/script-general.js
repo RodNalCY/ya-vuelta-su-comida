@@ -196,6 +196,7 @@ $(document).ready(function () {
     );
     $("#img-qr-pago").attr("src", "img/qr-plin.jpeg");
     // $("#contentfileVoucher").css("display", "block");
+    $("#phone_number").css("display", "block");
     $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "PLIN";
@@ -217,6 +218,7 @@ $(document).ready(function () {
     );
     $("#img-qr-pago").attr("src", "img/qr-yape.jpeg");
     // $("#contentfileVoucher").css("display", "block");
+    $("#phone_number").css("display", "block");
     $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "";
@@ -238,6 +240,7 @@ $(document).ready(function () {
     );
     $("#img-qr-pago").attr("src", "img/contra-entrega.png");
     // $("#contentfileVoucher").css("display", "none");
+    $("#phone_number").css("display", "none");
     $("#contentVuelto").css("display", "block");
 
     r_global_medio_pago_plin = "";

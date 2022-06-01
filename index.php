@@ -204,6 +204,9 @@
               <div class="txt-contenido">
                 <p class="txt-mensaje" id="txt-medio"></p>
               </div>
+              <div class="mb-3 text-center text-numero" id="phone_number" style="display: none;">
+                  <p class="fs-3">#(+51) 925 662 591</p>
+              </div>
               <!-- <div class="mb-3" id="contentfileVoucher">
                 <label for="fileVoucher" class="form-label txt-mensaje">Subir Voucher :</label>
                 <input class="form-control form-control-sm" id="fileVoucher" type="file" accept="image/png,image/jpeg,image/jpg">
