@@ -334,6 +334,11 @@ ol, ul {
     font-weight: 100 !important;
 }
 
+.spinnerFinalizar {
+    width: 3rem !important;
+    height: 3rem !important;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .card-invite .imgBox {

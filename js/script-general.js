@@ -129,23 +129,23 @@ $(document).ready(function () {
           url: "https://verificar-email.leoncioprado.com/",
           data: parametros,
           beforeSend: function (data) {
-            $(".resultado").html(
-              '<div class="progress mt-2"><div class="progress-bar progress-bar-striped active bg-warning txt-progress-bar" role="progressbar"  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">Validando email</div></div>'
-            );
+            $("#spinnerLoadCorreo").css("display", "block");
+            $("#btnContinuar").prop("disabled", true);
           },
           complete: function (data) {},
           success: function (datos) {
-            $(".resultado").html("");
+            $("#spinnerLoadCorreo").css("display", "none");
             var result = JSON.parse(datos);
-            console.log("email verificado > ", result);
+            // console.log("email verificado > ", result);
             if (result.validated) {
               Swal.fire({
                 icon: "success",
                 title: "Ya, vuelta!",
                 text: "Datos verificados correctamente !",
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 2500,
               });
+              $("#btnContinuar").prop("disabled", false);
 
               $("#mdRegistroCompra").modal("hide");
               $("#mdSelectMetodoPago").modal("show");
@@ -155,8 +155,9 @@ $(document).ready(function () {
                 title: "Ya, vuelta!",
                 text: "Email no existe !",
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 2500,
               });
+              $("#btnContinuar").prop("disabled", false);
             }
           },
           error: function (data) {
@@ -194,7 +195,7 @@ $(document).ready(function () {
         ".00</span>"
     );
     $("#img-qr-pago").attr("src", "img/qr-plin.jpeg");
-    $("#contentfileVoucher").css("display", "block");
+    // $("#contentfileVoucher").css("display", "block");
     $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "PLIN";
@@ -215,7 +216,7 @@ $(document).ready(function () {
         ".00</span>"
     );
     $("#img-qr-pago").attr("src", "img/qr-yape.jpeg");
-    $("#contentfileVoucher").css("display", "block");
+    // $("#contentfileVoucher").css("display", "block");
     $("#contentVuelto").css("display", "none");
 
     r_global_medio_pago_plin = "";
@@ -236,7 +237,7 @@ $(document).ready(function () {
         ".00</span>"
     );
     $("#img-qr-pago").attr("src", "img/contra-entrega.png");
-    $("#contentfileVoucher").css("display", "none");
+    // $("#contentfileVoucher").css("display", "none");
     $("#contentVuelto").css("display", "block");
 
     r_global_medio_pago_plin = "";
@@ -297,57 +298,107 @@ $(document).ready(function () {
       r_user_has_email = true;
       $("#txtEmail").prop("disabled", false);
     }
-    console.log("Has Email > ", r_user_has_email);
+    // console.log("Has Email > ", r_user_has_email);
   });
 
   $("#btnFinalizarCompra").click(function () {
-    console.log("/////////////////////////////////////////////");
-    console.log("NOMBRES Y APELLIDOS:" + r_global_nombre);
-    console.log("CELULAR:" + r_global_celular);
-    console.log("TIENE EMAIL: " + r_user_has_email);
-    console.log("EMAIL: " + r_global_email);
-    console.log("DIRECCION:" + r_global_direccion);
+    $("#spinnerLoadFinalizar").css("display", "block");
+    $("#btnFinalizarCompra").prop("disabled", true);
+    // console.log("/////////////////////////////////////////////");
+    // console.log("NOMBRES Y APELLIDOS:" + r_global_nombre);
+    // console.log("CELULAR:" + r_global_celular);
+    // console.log("TIENE EMAIL: " + r_user_has_email);
+    // console.log("EMAIL: " + r_global_email);
+    // console.log("DIRECCION:" + r_global_direccion);
 
-    console.log("PLIN:" + r_global_medio_pago_plin);
-    console.log("YAPE:" + r_global_medio_pago_yape);
-    console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
+    // console.log("PLIN:" + r_global_medio_pago_plin);
+    // console.log("YAPE:" + r_global_medio_pago_yape);
+    // console.log("CONTRA ENTREGA:" + r_global_medio_pago_contra_entrega);
 
-    console.log("PRECIO SELECCIONADO:" + r_price_selected);
-    console.log("MONTO INGRESADO:" + r_global_monto_ingresado);
-    console.log("MONTO VUELTO:" + r_global_monto_vuelto);
-    console.log("/////////////////////////////////////////////");
+    // console.log("PRECIO SELECCIONADO:" + r_price_selected);
+    // console.log("MONTO INGRESADO:" + r_global_monto_ingresado);
+    // console.log("MONTO VUELTO:" + r_global_monto_vuelto);
+    // console.log("/////////////////////////////////////////////");
+
+
+
+    var link_error =
+      '<a target="_blank" style="text-decoration: underline;color: #595959;" href="https://api.whatsapp.com/send?phone=+51925662591&text=Saludos!%20quiero%20resportar%20una%20falla%20en%20la%20reserva!%20mi%20Ticket%20es:%202000">Comuniquese con nosotros por este enlace o al +(51) 912 101 970</a>';
+
+    var r_parametros = {
+      r_name_lastname: r_global_nombre,
+      r_phone: r_global_celular,
+      r_email: r_global_email,
+      r_place: r_global_direccion,
+      r_medio_plin: r_global_medio_pago_plin,
+      r_medio_yape: r_global_medio_pago_yape,
+      r_medio_efectivo: r_global_medio_pago_contra_entrega,
+      r_product_price: r_price_selected,
+      r_monto_ingresado: r_global_monto_ingresado,
+      r_monto_vuelto: r_global_monto_vuelto,
+    };
 
     if (r_user_has_email == true && r_global_email != "") {
       console.log("Email Enviado");
-      var r_parametros = {
-        r_name_lastname: r_global_nombre,
-        r_phone: r_global_celular,
-        r_email: r_global_email,
-        r_place: r_global_direccion,
-        r_medio_plin: r_global_medio_pago_plin,
-        r_medio_yape: r_global_medio_pago_yape,
-        r_medio_efectivo: r_global_medio_pago_contra_entrega,
-        r_product_price: r_price_selected,
-        r_monto_ingresado: r_global_monto_ingresado,
-        r_monto_vuelto: r_global_monto_vuelto,
-      };
 
       $.ajax({
         type: "POST",
-        url: "/services/send-email.php",
+        url: "/services/send_email_cliente.php",
         data: r_parametros,
-        beforeSend: function (data) {},
-        complete: function (data) {},
         success: function (datos) {
           var result = JSON.parse(datos);
-          console.log("Send Email> ", result);
-          Swal.fire({
-            icon: "success",
-            title: "Uy, bien!",
-            text: "reserva realizada con Exito",
-            showConfirmButton: false,
-            timer: 2000,
-          });
+          if (result["status"] == "ok") {
+            console.log("Send Cliente> ", "Oki");
+            $.ajax({
+              type: "POST",
+              url: "/services/send_email_vendedor.php",
+              data: r_parametros,
+              success: function (datos) {
+                var result = JSON.parse(datos);
+                console.log("Send Vendedor> ", result);
+
+                if (result["status"] == "ok") {
+                  console.log("Send Vendedor> ", "Oki");
+                  Swal.fire({
+                    icon: "success",
+                    title: "Uy, bien!",
+                    text: "reserva realizada con Exito",
+                    showConfirmButton: false,
+                    timer: 2500,
+                  });
+
+                  $("#spinnerLoadFinalizar").css("display", "none");
+                  setTimeout(function() {
+                    location.reload();
+                }, 3000);
+
+                } else {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Uy, Fallo!",
+                    text: "Lo sentimos, su reserva fallo!",
+                    footer: link_error,
+                    confirmButtonText: "Finalizar",
+                  });
+                  $("#spinnerLoadFinalizar").css("display", "none");
+                  $("#btnFinalizarCompra").prop("disabled", false);
+                }
+              },
+              error: function (data) {
+                console.log("Error:", data);
+              },
+            });
+          } else {
+            $("#spinnerLoadFinalizar").css("display", "none");
+            $("#btnFinalizarCompra").prop("disabled", false);
+            Swal.fire({
+              icon: "error",
+              title: "Uy, Fallo!",
+              text: "Lo sentimos, su reserva fallo!",
+              footer: link_error,
+              confirmButtonText: "Finalizar",
+            });
+          }
         },
         error: function (data) {
           console.log("Error:", data);
@@ -355,8 +406,43 @@ $(document).ready(function () {
       });
     } else {
       console.log("Celular Enviado");
+      $.ajax({
+        type: "POST",
+        url: "/services/send_email_vendedor.php",
+        data: r_parametros,
+        success: function (datos) {
+          var result = JSON.parse(datos);
+
+          if (result["status"] == "ok") {
+            console.log("Send Vendedor> ", "Oki");
+            Swal.fire({
+              icon: "success",
+              title: "Uy, bien!",
+              text: "reserva realizada con Exito",
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            $("#spinnerLoadFinalizar").css("display", "none");
+            setTimeout(function() {
+              location.reload();
+          }, 3000);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Uy, Fallo!",
+              text: "Lo sentimos, su reserva fallo!",
+              footer: link_error,
+              confirmButtonText: "Finalizar",
+            });
+            $("#spinnerLoadFinalizar").css("display", "none");
+            $("#btnFinalizarCompra").prop("disabled", false);
+          }
+        },
+        error: function (data) {
+          console.log("Error:", data);
+        },
+      });
     }
 
-    // $("#mdSelectMetodoPago").modal("hide");
   });
 });

@@ -37,8 +37,8 @@
       <img src="img/el-juane.jpg" alt="El juane">
     </div>
     <div class="details">
-      <div class="title">
-        <h3>Ya Vuelta, su comida !</h3>
+      <div class="title text-center">
+        <h3>¡ SABROSOON FOOD ! </h3>
         <center><small class="txt-font-contenido">"De la selva sus delicias"</small></center>
       </div>
       <div class="description">
@@ -110,12 +110,18 @@
                 </div>
               </div>
               <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" required placeholder="email@gmail.com">
-                <div id="emailHelp" class="form-text">Ingrese su correo para enviar su recibo de compra.</div>
-                <div class="resultado mb-3"></div>
+              <div id="emailHelp" class="form-text">Ingrese su correo para enviar su recibo de compra.</div>
+              <div class="col-md-12 mt-4" id="spinnerLoadCorreo" style="display: none;">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
 
-            
+
 
             <div class="mb-3">
               <label for="txtDireccion" class="form-label">Dirección</label>
@@ -198,10 +204,10 @@
               <div class="txt-contenido">
                 <p class="txt-mensaje" id="txt-medio"></p>
               </div>
-              <div class="mb-3" id="contentfileVoucher">
+              <!-- <div class="mb-3" id="contentfileVoucher">
                 <label for="fileVoucher" class="form-label txt-mensaje">Subir Voucher :</label>
                 <input class="form-control form-control-sm" id="fileVoucher" type="file" accept="image/png,image/jpeg,image/jpg">
-              </div>
+              </div> -->
               <div class="mb-3" id="contentVuelto">
                 <div class="input-group">
                   <span class="input-group-text">S/</span>
@@ -213,10 +219,13 @@
                 <img src="" class="img-qr-pago" id="img-qr-pago" alt="QR">
               </div>
             </div>
-            <div class="col-md-12 mt-4">
-              <p class="txt-aviso">Ojo: Si desea pagar después de recoger el pedido y no lo quiere cancelar ahora, solo ingrese al medio de pago que va utilizar y pulse el boton finalizar.</p>
+            <div class="col-md-12 mt-4" id="spinnerLoadFinalizar" style="display: none;">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border text-warning spinnerFinalizar" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </div>
-
 
           </div>
         </div>

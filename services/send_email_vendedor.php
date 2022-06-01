@@ -1,5 +1,6 @@
 <?php
-include 'http-cors.php';
+require_once("PHPMailer/ClassEmail.php");
+$mailSend = new ClassEmail();
 
 if (
     isset($_POST["r_name_lastname"]) &&
@@ -30,6 +31,7 @@ if (
     // VALIDACIONES 
     $medio_pago = "-";
     $html_monto_vuelto = "";
+    $html_email = "-";
 
     $total_mpagar;
     $total_mvuelto;
@@ -52,19 +54,17 @@ if (
         $medio_pago = "YAPE";
     } else if ($efectivo == "EFECTIVO") {
         $medio_pago = "EFECTIVO";
-        $html_monto_vuelto = "<tr><td>Monto a Pagar</td><td>" . $total_mpagar . "</td></tr>";
-        $html_monto_vuelto .= "<tr><td>Vuelto</td><td>" . $monto_vuelto . "</td></tr>";
+        $html_monto_vuelto = "<tr><td>Monto a Pagar</td><td>S/ " . $total_mpagar . "</td></tr>";
+        $html_monto_vuelto .= "<tr><td>Vuelto</td><td>S/ " . $monto_vuelto . "</td></tr>";
+    }
+    
+    if($email != ""){
+        $html_email = $email; 
     }
 
-    // Datos de Correo    
-    $header = 'MIME-Version: 1.0' . "\r\n";
-    $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $header .= 'From: El Huambrillo Boot ᗡ[o_o]D <samsungrodnal@gmail.com>' . "\r\n";
+    $cli_name = str_replace(" ","%20",$name);
 
-    $vendedor         = "rodnalcabello07@gmail.com";
-    $asunto_vendedor  = "Se Realizo una venta de Juane Ticket #" . $ticket;
-    // $mensaje  = "Hola RodNal";
-
+    $html_whatssap ='<a href="https://api.whatsapp.com/send?phone=+51'.$phone.'&text=Buen%20dia!%20S%C3%B1r(a).%20'.$cli_name.'%20Ud%20Realizo%20una%20compra%20de%20jueane%20de%20S/'.$price.'.00%20y%20utilizar%C3%A1%20el%20medio%20de%20pago%20'.$medio_pago.'.%20Para%20confirmar%20su%20pedido%20mencione:%20*SI*%20">' . $phone . '</a> ';
 
     $mensaje_vendedor = '
     <html>
@@ -130,16 +130,20 @@ if (
         <td>#' . $ticket . '</td>
     </tr>
     <tr>
+        <td>Precio</td>
+        <td>S/ ' . $price . '.00</td>
+    </tr>
+    <tr>
         <td>Nombre(s) Apellido (s)</td>
         <td>' . $name . '</td>
     </tr>
     <tr>
        <td>Email </td>
-       <td>' . $email . '</td>
+       <td>' . $html_email . '</td>
     </tr>
     <tr>
        <td>Celular</td>
-       <td><a href="https://api.whatsapp.com/send?phone=+51' . $phone . '&text=Buen%20dia.">' . $phone . '</a> </td>
+       <td>'.$html_whatssap.'</td>
     </tr>
     <tr>
        <td>Dirección</td>
@@ -159,21 +163,18 @@ if (
     </html>';
 
 
-    $send_email_vendedor = mail($vendedor, $asunto_vendedor, $mensaje_vendedor, $header);
-    if ($send_email_vendedor) {
+    $header          = "ATC - Venta Realizada";
+    $email           = "sabrosoonfood@gmail.com";
+    $name_vendedor   = "Sabrosoon Food - 1.0";
+    $asunto_vendedor = "Se Realizo una venta de Juane Ticket #" . $ticket;
+
+    $enviado_vendedor = $mailSend->sendEnviarEmail($header, $email, $name_vendedor, $asunto_vendedor, $mensaje_vendedor);
+    if($enviado_vendedor){
         echo json_encode([
             'status' => 'ok',
-            'name' => $name,
-            'phone' => $phone,
-            'place' => $place,
-            'plin' => $plin,
-            'yape' => $yape,
-            'efectivo' => $efectivo,
-            'price' => $price,
-            'monto_ingresado' => $monto_ingresado,
-            'monto_vuelto' => $monto_vuelto
+            'message' => 'se envio email al vendedor'
         ]);
-    } else {
+    }else{
         echo json_encode([
             'status' => 'error',
             'message' => 'error del vendedor'

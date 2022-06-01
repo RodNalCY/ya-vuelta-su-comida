@@ -1,5 +1,7 @@
 <?php
-include 'http-cors.php';
+
+require_once("PHPMailer/ClassEmail.php");
+$mailSend = new ClassEmail();
 
 if (
     isset($_POST["r_name_lastname"]) &&
@@ -52,20 +54,11 @@ if (
         $medio_pago = "YAPE";
     } else if ($efectivo == "EFECTIVO") {
         $medio_pago = "EFECTIVO";
-        $html_monto_vuelto = "<tr><td>Monto a Pagar</td><td>" . $total_mpagar . "</td></tr>";
-        $html_monto_vuelto .= "<tr><td>Vuelto</td><td>" . $monto_vuelto . "</td></tr>";
+        $html_monto_vuelto = "<tr><td>Monto a Pagar</td><td>S/ " . $total_mpagar . "</td></tr>";
+        $html_monto_vuelto .= "<tr><td>Vuelto</td><td>S/ " . $monto_vuelto . "</td></tr>";
     }
 
-    // Datos de Correo    
-    $header = 'MIME-Version: 1.0' . "\r\n";
-    $header .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $header .= 'From: El Huambrillo Boot ᗡ[o_o]D <samsungrodnal@gmail.com>' . "\r\n";
-
-    $cliente          = $email;
-    $asunto_cliente   = "Ud. Realizo una compra de Juane Ticket #" . $ticket;
-    // $mensaje  = "Hola RodNal";
-
-
+    
     $mensaje_cliente = '
     <html>
     <head>
@@ -130,6 +123,10 @@ if (
         <td>#' . $ticket . '</td>
     </tr>
     <tr>
+        <td>Precio</td>
+        <td>S/ ' . $price . '.00</td>
+    </tr>
+    <tr>
        <td>Celular</td>
        <td>' . $phone . '</td>
     </tr>
@@ -151,26 +148,23 @@ if (
     </body>
     </html>';
 
-    $send_email_cliente = mail($cliente, $asunto_cliente, $mensaje_cliente, $header);
-    if ($send_email_cliente) {
+    
 
+    $header = "ATC - Sabrosoon-Food";
+    $asunto_cliente   = "Ud. Realizo una compra de Juane Ticket #" . $ticket;
+
+    $enviado_cliente = $mailSend->sendEnviarEmail($header, $email, $name, $asunto_cliente, $mensaje_cliente);
+    if($enviado_cliente){
         echo json_encode([
             'status' => 'ok',
-            'name' => $name,
-            'phone' => $phone,
-            'email' => $email,
-            'place' => $place,
-            'plin' => $plin,
-            'yape' => $yape,
-            'efectivo' => $efectivo,
-            'price' => $price,
-            'monto_ingresado' => $monto_ingresado,
-            'monto_vuelto' => $monto_vuelto
+            'message' => 'se envio email al cliente'
         ]);
-    } else {
+    }else{
         echo json_encode([
             'status' => 'error',
             'message' => 'error del cliente'
         ]);
     }
+
+    
 }
