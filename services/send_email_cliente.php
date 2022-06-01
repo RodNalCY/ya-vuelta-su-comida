@@ -13,11 +13,12 @@ if (
     isset($_POST["r_medio_efectivo"]) &&
     isset($_POST["r_product_price"]) &&
     isset($_POST["r_monto_ingresado"]) &&
-    isset($_POST["r_monto_vuelto"])
+    isset($_POST["r_monto_vuelto"]) &&
+    isset($_POST["r_ticket"])
 ) {
 
     // Parametros HTTPS
-    $ticket          = "0005";
+    $ticket          = "X-".$_POST["r_ticket"];
     $name            = $_POST["r_name_lastname"];
     $phone           = $_POST["r_phone"];
     $email           = $_POST["r_email"];
@@ -115,7 +116,7 @@ if (
     <body>
     <div class="card">
     <img src="https://ya-vuelta-su-comida.lab-elsol.com/img/icono-email.png" alt="Icono" style="width:100%">
-    <p align="justify">Gracias por su colaboración Sñr (a) ' . $name . ', su reserva se proceso de forma exitosa. Adjuntamos el detalle de su compra ante cualquier duda puedes escribirnos al correo samsungrodnal@gmail.com, lo atenderemos con mucho gusto.</p>
+    <p align="justify">Gracias por su colaboración Sñr (a) ' . $name . ', su reserva se proceso de forma exitosa. Adjuntamos el detalle de su compra ante cualquier duda puedes escribirnos al correo sabrosoonfood@gmail.com, lo atenderemos con mucho gusto.</p>
     <div>
     <table>
     <tr>

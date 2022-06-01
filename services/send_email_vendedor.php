@@ -12,11 +12,12 @@ if (
     isset($_POST["r_medio_efectivo"]) &&
     isset($_POST["r_product_price"]) &&
     isset($_POST["r_monto_ingresado"]) &&
-    isset($_POST["r_monto_vuelto"])
+    isset($_POST["r_monto_vuelto"])&&
+    isset($_POST["r_ticket"])
 ) {
 
     // Parametros HTTPS
-    $ticket          = "0005";
+    $ticket          = "X-".$_POST["r_ticket"];
     $name            = $_POST["r_name_lastname"];
     $phone           = $_POST["r_phone"];
     $email           = $_POST["r_email"];
@@ -64,7 +65,7 @@ if (
 
     $cli_name = str_replace(" ","%20",$name);
 
-    $html_whatssap ='<a href="https://api.whatsapp.com/send?phone=+51'.$phone.'&text=Buen%20dia!%20S%C3%B1r(a).%20'.$cli_name.'%20Ud%20Realizo%20una%20compra%20de%20jueane%20de%20S/'.$price.'.00%20y%20utilizar%C3%A1%20el%20medio%20de%20pago%20'.$medio_pago.'.%20Para%20confirmar%20su%20pedido%20mencione:%20*SI*%20">' . $phone . '</a> ';
+    $html_whatssap ='<a href="https://api.whatsapp.com/send?phone=+51'.$phone.'&text=Buen%20dia!%20S%C3%B1r(a).%20'.$cli_name.'%20Ud%20Realizo%20una%20compra%20de%20jueane%20Ticket:%20'.$ticket.'%20precio%20S/'.$price.'.00%20y%20utilizar%C3%A1%20el%20medio%20de%20pago%20'.$medio_pago.'.%20Para%20confirmar%20su%20pedido%20mencione:%20*SI*%20">' . $phone . '</a> ';
 
     $mensaje_vendedor = '
     <html>

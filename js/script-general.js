@@ -12,6 +12,7 @@ var r_global_monto_ingresado = 0;
 var r_global_monto_vuelto = 0;
 
 var r_user_has_email = true;
+var r_global_ticket = 0;
 
 $(document).ready(function () {
   r_price_selected = 0;
@@ -323,12 +324,7 @@ $(document).ready(function () {
     // console.log("MONTO VUELTO:" + r_global_monto_vuelto);
     // console.log("/////////////////////////////////////////////");
 
-
-
-    var link_error =
-      '<a target="_blank" style="text-decoration: underline;color: #595959;" href="https://api.whatsapp.com/send?phone=+51925662591&text=Saludos!%20quiero%20resportar%20una%20falla%20en%20la%20reserva!%20mi%20Ticket%20es:%202000">Comuniquese con nosotros por este enlace o al +(51) 912 101 970</a>';
-
-    var r_parametros = {
+    var r_parametros_sql = {
       r_name_lastname: r_global_nombre,
       r_phone: r_global_celular,
       r_email: r_global_email,
@@ -341,24 +337,108 @@ $(document).ready(function () {
       r_monto_vuelto: r_global_monto_vuelto,
     };
 
-    if (r_user_has_email == true && r_global_email != "") {
-      console.log("Email Enviado");
+    $.ajax({
+      type: "POST",
+      url: "/services/PHP_HTTP/insert.php",
+      data: r_parametros_sql,
+      success: function (datos) {
+        var result = JSON.parse(datos);
+        console.log("Rs> ", result);
+        if (result["status"]) {
+          r_global_ticket = result["ticket"];
+          console.log("ticket> ", r_global_ticket);
 
-      $.ajax({
-        type: "POST",
-        url: "/services/send_email_cliente.php",
-        data: r_parametros,
-        success: function (datos) {
-          var result = JSON.parse(datos);
-          if (result["status"] == "ok") {
-            console.log("Send Cliente> ", "Oki");
+          var link_error =
+            '<a target="_blank" style="text-decoration: underline;color: #595959;" href="https://api.whatsapp.com/send?phone=+51925662591&text=Saludos!%20quiero%20resportar%20una%20falla%20en%20la%20reserva!%20mi%20Ticket%20es:%20X-' +
+            r_global_ticket +
+            '">Comuniquese con nosotros por este enlace o al +(51) 912 101 970</a>';
+          var r_parametros_email = {
+            r_name_lastname: r_global_nombre,
+            r_phone: r_global_celular,
+            r_email: r_global_email,
+            r_place: r_global_direccion,
+            r_medio_plin: r_global_medio_pago_plin,
+            r_medio_yape: r_global_medio_pago_yape,
+            r_medio_efectivo: r_global_medio_pago_contra_entrega,
+            r_product_price: r_price_selected,
+            r_monto_ingresado: r_global_monto_ingresado,
+            r_monto_vuelto: r_global_monto_vuelto,
+            r_ticket: r_global_ticket,
+          };
+
+          if (r_user_has_email == true && r_global_email != "") {
+            console.log("Email Enviado");            
+
+            $.ajax({
+              type: "POST",
+              url: "/services/send_email_cliente.php",
+              data: r_parametros_email,
+              success: function (datos) {
+                var result = JSON.parse(datos);
+                if (result["status"] == "ok") {
+                  console.log("Send Cliente> ", "Oki");
+                  $.ajax({
+                    type: "POST",
+                    url: "/services/send_email_vendedor.php",
+                    data: r_parametros_email,
+                    success: function (datos) {
+                      var result = JSON.parse(datos);
+                      console.log("Send Vendedor> ", result);
+
+                      if (result["status"] == "ok") {
+                        console.log("Send Vendedor> ", "Oki");
+                        Swal.fire({
+                          icon: "success",
+                          title: "Uy, bien!",
+                          text: "reserva realizada con Exito",
+                          showConfirmButton: false,
+                          timer: 2500,
+                        });
+
+                        $("#spinnerLoadFinalizar").css("display", "none");
+                        setTimeout(function () {
+                          location.reload();
+                        }, 3000);
+                      } else {
+                        Swal.fire({
+                          icon: "error",
+                          title: "Uy, Fallo!",
+                          text: "Lo sentimos, su reserva fallo!",
+                          footer: link_error,
+                          confirmButtonText: "Finalizar",
+                        });
+                        $("#spinnerLoadFinalizar").css("display", "none");
+                        $("#btnFinalizarCompra").prop("disabled", false);
+                      }
+                    },
+                    error: function (data) {
+                      console.log("Error:", data);
+                    },
+                  });
+                } else {
+                  $("#spinnerLoadFinalizar").css("display", "none");
+                  $("#btnFinalizarCompra").prop("disabled", false);
+                  Swal.fire({
+                    icon: "error",
+                    title: "Uy, Fallo!",
+                    text: "Lo sentimos, su reserva fallo!",
+                    footer: link_error,
+                    confirmButtonText: "Finalizar",
+                  });
+                }
+              },
+              error: function (data) {
+                console.log("Error:", data);
+              },
+            });
+          } else {
+            console.log("Celular Enviado");
             $.ajax({
               type: "POST",
               url: "/services/send_email_vendedor.php",
-              data: r_parametros,
+              data: r_parametros_email,
               success: function (datos) {
                 var result = JSON.parse(datos);
-                console.log("Send Vendedor> ", result);
 
                 if (result["status"] == "ok") {
                   console.log("Send Vendedor> ", "Oki");
@@ -369,12 +449,10 @@ $(document).ready(function () {
                     showConfirmButton: false,
                     timer: 2500,
                   });
-
                   $("#spinnerLoadFinalizar").css("display", "none");
-                  setTimeout(function() {
+                  setTimeout(function () {
                     location.reload();
-                }, 3000);
-
+                  }, 3000);
                 } else {
                   Swal.fire({
                     icon: "error",
@@ -391,61 +469,14 @@ $(document).ready(function () {
                 console.log("Error:", data);
               },
             });
-          } else {
-            $("#spinnerLoadFinalizar").css("display", "none");
-            $("#btnFinalizarCompra").prop("disabled", false);
-            Swal.fire({
-              icon: "error",
-              title: "Uy, Fallo!",
-              text: "Lo sentimos, su reserva fallo!",
-              footer: link_error,
-              confirmButtonText: "Finalizar",
-            });
           }
-        },
-        error: function (data) {
-          console.log("Error:", data);
-        },
-      });
-    } else {
-      console.log("Celular Enviado");
-      $.ajax({
-        type: "POST",
-        url: "/services/send_email_vendedor.php",
-        data: r_parametros,
-        success: function (datos) {
-          var result = JSON.parse(datos);
-
-          if (result["status"] == "ok") {
-            console.log("Send Vendedor> ", "Oki");
-            Swal.fire({
-              icon: "success",
-              title: "Uy, bien!",
-              text: "reserva realizada con Exito",
-              showConfirmButton: false,
-              timer: 2500,
-            });
-            $("#spinnerLoadFinalizar").css("display", "none");
-            setTimeout(function() {
-              location.reload();
-          }, 3000);
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Uy, Fallo!",
-              text: "Lo sentimos, su reserva fallo!",
-              footer: link_error,
-              confirmButtonText: "Finalizar",
-            });
-            $("#spinnerLoadFinalizar").css("display", "none");
-            $("#btnFinalizarCompra").prop("disabled", false);
-          }
-        },
-        error: function (data) {
-          console.log("Error:", data);
-        },
-      });
-    }
-
+        } else {
+          console.log("Error:", result);
+        }
+      },
+      error: function (data) {
+        console.log("Error:", data);
+      },
+    });
   });
 });
