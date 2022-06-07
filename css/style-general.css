@@ -23,7 +23,7 @@ body{
 
     min-height: 100vh;
 
-    background: linear-gradient(180deg, #28B463, #28B463 50%, #fff 50%, #fff 100%);
+    background: linear-gradient(180deg, #e4002b, #e4002b 50%, #fff 50%, #fff 100%);
 
     font-family:  'Chewy';
 
@@ -113,7 +113,7 @@ body{
 
     min-width: 300px;
 
-    background: #28B463;
+    background: #006241;
 
     display: flex;
 
@@ -161,7 +161,7 @@ body{
 
     font-size: 1.8em;
 
-    color: #F1C40F;
+    color: #e4002b;
 
     text-shadow: -1px 1px 0 #fff,
 
@@ -189,7 +189,7 @@ body{
 
     font-size: 1.4em;
 
-    color: #F1C40F;
+    color: #e4002b;
 
     text-shadow: -1px 1px 0 #fff,
 
@@ -252,10 +252,14 @@ body{
     border-radius: inherit;
 
 }
+.btn-outline-danger {
+    color: #fff;
+    border-color: #fff;
+}
 
 .btn-outline-light:hover{
 
-    color: #F1C40F;
+    color: #e4002b;
 
     transform: 1.5s;
 
@@ -369,7 +373,8 @@ ol, ul {
 
 .modal-content {
 
-    background-color: #28B463;
+    background-color: #006241;
+    border: 1px solid #fff;
 
 }
 
@@ -381,7 +386,7 @@ ol, ul {
 
     font-size: 1.6em;
 
-    color: #F1C40F;
+    color: #e4002b;
 
     text-shadow: -1px 1px 0 #fff,
 
@@ -401,7 +406,7 @@ ol, ul {
 
     font-weight: 200;
 
-    color: #F1C40F;
+    color: #e4002b;
 
     text-shadow: -1px 1px 0 #fff,
 
@@ -417,17 +422,17 @@ ol, ul {
 
 .form-text {
 
-    color: #fff;
+    color: #006241;
 
     font-weight: 200;
 
-    text-shadow: -1px 1px 0 #000,
+    text-shadow: -1px 1px 0 #fff,
 
-    1px 1px 0 #000,
+    1px 1px 0 #fff,
 
-    1px -1px 0 #000,
+    1px -1px 0 #fff,
 
-    -1px -1px 0 #000;
+    -1px -1px 0 #fff;
 
 }
 
@@ -657,15 +662,15 @@ ol, ul {
 
 .txt-price-selected{
 
-    color: #fff;
+    color: #e4002b;
 
-    text-shadow: -1px 1px 0 #000,
+    text-shadow: -1px 1px 0 #fff,
 
-    1px 1px 0 #000,
+    1px 1px 0 #fff,
 
-    1px -1px 0 #000,
+    1px -1px 0 #fff,
 
-    -1px -1px 0 #000 !important;
+    -1px -1px 0 #fff !important;
 
     font-weight: 100 !important;
 
@@ -701,8 +706,8 @@ ol, ul {
 
 
 .txt-incluye {
-    color: #fff;
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000 !important;
+    color: #e4002b;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff !important;
     font-weight: 100 !important;
     padding-left: 50px;
     padding-right: 50px;

@@ -17,16 +17,16 @@ class ClassEmail{
         $this->mail = new PHPMailer();
         $this->mail->isSMTP();
         $this->mail->SMTPAuth   = true;
-        $this->mail->SMTPSecure = 'ssl'; 
-        $this->mail->Host       = 'mail.lab-elsol.com';    
-        $this->mail->Port       = 465; 
+        $this->mail->SMTPSecure = 'tls'; 
+        $this->mail->Host       = 'smtp.gmail.com';    
+        $this->mail->Port       = 587; 
         //Enable SMTP authentication
-        $this->mail->Username   = 'atencion_sobrosoon@lab-elsol.com';                     
-        $this->mail->Password   = '_sobr0so_2022';     
+        $this->mail->Username   = 'sabrosoonfood@gmail.com';                     
+        $this->mail->Password   = 'pigkmgzgxufbqnme';     
     }
 
     public function sendEnviarEmail(string $header, string $correo, string $nombre, string $asunto, string $bodyHTML){
-        $this->mail->setFrom("atencion_sobrosoon@lab-elsol.com", $header);
+        $this->mail->setFrom("sabrosoonfood@gmail.com", $header);
         $this->mail->addAddress($correo, $nombre);
         $this->mail->Subject = $asunto;
         $this->mail->Body = $bodyHTML;

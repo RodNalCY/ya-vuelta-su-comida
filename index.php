@@ -85,7 +85,7 @@
 
       <div class="description">
 
-        <h4>Bienvenido</h4>
+        <h4>Bienvenido </h4>
 
         <p class="txt-font-contenido">
           Sírvase a degustar uno de los potajes de nuestra amazonía, el juane un plato hecho a base de arroz, gallina o pollo e insumos propios de la región. Sabrosoon Food te invita a reservar tu pedido en nuestra web de manera segura y a disfrutarlo en familia.
@@ -99,11 +99,11 @@
 
         <ul>
 
-          <li><button type="button" class="btn btn-outline-light btn-border" id="m_economico">Económico</button></li>
+          <li><button type="button" class="btn btn-outline-danger btn-border" id="m_economico">Económico</button></li>
 
           <!-- <li><button type="button" class="btn btn-outline-light btn-border" id="m_light">Light</button></li> -->
 
-          <li><button type="button" class="btn btn-outline-light btn-border" id="m_ejecutivo">Ejecutivo</button></li>
+          <li><button type="button" class="btn btn-outline-danger btn-border" id="m_ejecutivo">Ejecutivo</button></li>
 
         </ul>
 
@@ -119,7 +119,7 @@
 
         </div>
 
-        <button type="button" id="btnReservar" class="btn btn-warning animate__animated animate__pulse animate__infinite" style="color: #fff; font-weight: 200; font-size: 1.3em;">Reservar</button>
+        <button type="button" id="btnReservar" class="btn btn-danger animate__animated animate__pulse animate__infinite" style="color: #fff; font-weight: 200; font-size: 1.3em;">Reservar</button>
 
 
 
@@ -153,7 +153,7 @@
 
             <h5 class="modal-title" id="exampleModalLabel">
 
-              <center> Sabrosoon Food, reserve su juane ! </center>
+              <center><i class="fa-solid fa-file-pen fa-sm"></i> Sabrosoon Food, reserve su juane ! </center>
 
             </h5>
 
@@ -235,7 +235,7 @@
 
                 <div class="d-flex justify-content-center">
 
-                  <div class="spinner-border text-warning" role="status">
+                  <div class="spinner-border text-danger" role="status">
 
                     <span class="visually-hidden">Loading...</span>
 
@@ -255,7 +255,7 @@
 
 
 
-            <div class="mb-3">
+            <div class="mb-3 mt-3">
 
               <label for="txtDireccion" class="form-label">Dirección</label>
 
@@ -273,7 +273,7 @@
 
           <div class="modal-footer">
 
-            <button type="button" id="btnContinuar" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-right"></i> Continuar</button>
+            <button type="button" id="btnContinuar" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-right"></i> Continuar</button>
 
           </div>
 
@@ -301,7 +301,7 @@
 
           <h5 class="modal-title" id="exampleModalLabel">
 
-            <center> Sabrosoon Food, método de pago ! </center>
+            <center><i class="fa-solid fa-money-bill-1-wave"></i> Sabrosoon Food, método de pago ! </center>
 
           </h5>
 
@@ -367,7 +367,7 @@
 
         <div class="modal-footer">
 
-          <button type="button" id="btnIrAtrasFormulario" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+          <button type="button" id="btnIrAtrasFormulario" class="btn btn-light btn-lg animate__animated animate__pulse animate__infinite" style="color:#e4002b;"><i class="fa-solid fa-angle-left"></i> atrás</button>
 
 
 
@@ -399,7 +399,7 @@
 
           <h5 class="modal-title" id="exampleModalLabel">
 
-            <center> Sabrosoon Food, método de pago ! </center>
+            <center><i class="fa-solid fa-box-check"></i> <i class="fa-solid fa-circle-check"></i> Sabrosoon Food, Finalizar compra ! </center>
 
           </h5>
 
@@ -475,11 +475,11 @@
 
         <div class="modal-footer">
 
-          <button type="button" id="btnIrAtras" class="btn btn-danger btn-lg" style="color:#fff;"><i class="fa-solid fa-angle-left"></i> atrás</button>
+          <button type="button" id="btnIrAtras" class="btn btn-light btn-lg" style="color:#e4002b;"><i class="fa-solid fa-angle-left"></i> atrás</button>
 
 
 
-          <button type="button" id="btnFinalizarCompra" class="btn btn-warning btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i> Finalizar</button>
+          <button type="button" id="btnFinalizarCompra" class="btn btn-danger btn-lg animate__animated animate__pulse animate__infinite" style="color:#fff;"><i class="fa-solid fa-paper-plane"></i> Finalizar</button>
 
         </div>
 
