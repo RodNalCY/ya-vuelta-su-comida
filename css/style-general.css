@@ -1,462 +1,935 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
+
 *{
+
     padding: 0;
+
     margin: 0;
+
     box-sizing: border-box;
+
 }
+
+
 
 body{
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     min-height: 100vh;
+
     background: linear-gradient(180deg, #28B463, #28B463 50%, #fff 50%, #fff 100%);
+
     font-family:  'Chewy';
+
     font-weight: bold;
+
 }
+
+
 
 .card-invite {
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     width: 600px;
+
     /* width: 300px; */
-    height: 440px;
+
+    height: 470px;
+
     background-color: #fff;
+
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+
     overflow: hidden;
+
     
+
     /* transition: 0.5s; */
+
 }
+
+
 
 /* .card-invite:hover{
+
     width: 600px;
+
 } */
 
+
+
 .card-invite .imgBox{
+
     position: relative;
+
     min-width: 300px;
+
     width: 300px;
+
     height: 100%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     transition: 0.5s;
+
 }
+
+
 
 .card-invite:hover .imgBox{
+
     transform: rotate(-6deg);
+
 }
+
+
 
 .card-invite .imgBox img{
+
     width: 80%;
+
 }
+
+
 
 .card-invite .details{
+
     position: relative;
+
     min-width: 300px;
+
     background: #28B463;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
+
     width: 100%;
+
     height: 100%;
+
     padding: 20px;
+
     color: #fff;
+
 }
+
+
 
 .card-invite .details::before{
+
     content: "";
+
     position: absolute;
+
     left: 0;
+
     width: 0;
+
     height: 0;
+
     border-bottom: 10px solid transparent;
+
     border-top: 10px solid transparent;
+
     border-left: 10px solid #fff;
+
 }
+
+
 
 .card-invite .details h3{
+
     font-weight: 200;
+
     font-size: 1.8em;
+
     color: #F1C40F;
+
     text-shadow: -1px 1px 0 #fff,
+
     1px 1px 0 #fff,
+
     1px -1px 0 #fff,
+
     -1px -1px 0 #fff;
+
 }
+
 .card-invite .details .title small{
+
     font-weight: 200;
+
     font-size: 1.4em;
+
 }
+
+
 
 .card-invite .details h4{
+
     font-weight: 200;
+
     font-size: 1.4em;
+
     color: #F1C40F;
+
     text-shadow: -1px 1px 0 #fff,
+
     1px 1px 0 #fff,
+
     1px -1px 0 #fff,
+
     -1px -1px 0 #fff;
+
 }
+
+
 
 .card-invite .details .description p{
+
     font-size: 1.0em;
+
     font-weight: 200;
+
 }
+
+
 
 .card-invite .details .types ul{
+
     display: flex;
+
     width: 100%;
+
     justify-content: space-between;
+
+    /**PADDIND SIN PRECIO Light*/
+    padding-right: 1.8em;
+    padding-left: 1.8em;
+
 }
+
+
 
 .card-invite .details .types ul li{
+
     list-style: none;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     font-size: 1.2em;
+
     font-weight: 200;
+
     padding: 0.1em;
+
 }
+
 .btn-border{
+
     border-radius: inherit;
+
 }
+
 .btn-outline-light:hover{
+
     color: #F1C40F;
+
     transform: 1.5s;
+
 }
+
 .card-invite .details .types ul li:hover{
+
    background-color: #fff;
+
    transition: background-color .5s;
+
    color: #28B463;
+
    cursor: pointer;
+
 }
+
+
 
 .card-invite .details .buy{
+
     display: flex;
+
     justify-content: space-between;
+
 }
+
+
 
 .card-invite .details .buy .price{
+
     font-size: 2.0em;
+
     font-weight: 200;
+
 }
+
+
 
 .card-invite .details .buy .btn-pay{
+
     background: #fff;
+
     padding: 0.8em 0.9em;
+
     text-transform: uppercase;    
+
     cursor: pointer;
+
 }
+
+
 
 .card-invite .details .buy .btn-pay a{
+
     text-decoration: none;
+
     color: #28B463;
+
     font-weight: 200;
+
     font-size: 1.2em;
+
 }
 
+
+
 .card-invite .details .buy a:hover{
+
     color: #fff;
+
 }
+
+
+
 
 
 .card-invite .details .buy .btn-pay:hover{
+
     background-color: #F4D03F;
+
     transition: background-color .5s;
+
 }
+
+
 
 .img-compra{
+
     width:150px;
+
     height:150px;
+
     border-radius:150px;
+
     border-radius:150px;
+
     border: 3px solid #fff;
+
 }
+
+
 
 ol, ul {
+
     padding-left: 0;
+
 }
+
+
 
 .modal-content {
+
     background-color: #28B463;
+
 }
+
+
 
 .modal-title {
+
     flex: auto;
+
     font-size: 1.6em;
+
     color: #F1C40F;
+
     text-shadow: -1px 1px 0 #fff,
+
     1px 1px 0 #fff,
+
     1px -1px 0 #fff,
+
     -1px -1px 0 #fff;
+
 }
+
+
 
 .form-label {
+
     font-size: 1.2em;
+
     font-weight: 200;
+
     color: #F1C40F;
+
     text-shadow: -1px 1px 0 #fff,
+
     1px 1px 0 #fff,
+
     1px -1px 0 #fff,
+
     -1px -1px 0 #fff;
+
 }
+
+
 
 .form-text {
+
     color: #fff;
+
     font-weight: 200;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000;
+
 }
+
+
 
 .txt-progress-bar{
+
     width:100%;
+
     font-weight: 100; 
+
     font-size: 1.0rem;
+
     color: #fff;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000;
+
 }
+
+
 
 .btn-success {
+
     font-size: 1.2em;
+
     font-weight: 200;
+
 }
 
+
+
 .audio-content{
+
     justify-content: center;
+
     position: absolute;
+
     top: 20%;
+
     box-shadow: 50px 5px 105px 0px rgb(0 0 0 / 25%);
+
     overflow: hidden;
+
     border-radius: 20px;
+
 }
+
 .audio-properties{
+
     width: 600px;
+
  }
 
 
+
+
+
  .img-metodo-pago{
+
     width:150px;
+
     height:150px;
+
     border-radius:150px;
+
     border: 3px solid #fff;
+
     cursor: pointer;
+
 }
+
+
 
 .img-qr-pago{
+
     width:370px;
+
     height:auto;
+
     border: 3px solid #fff;
+
     border-radius: 10px;
+
 }
+
+
 
 /*BUTTON SWITCH*/
+
 :root {
+
     --color-yellow: #F1C40F;
+
     --color-white: #fff;
+
     --color-button: #F1C40F;
+
     --color-black: #fff;
+
 }
+
 .switch-button {
+
     display: inline-block;
+
 }
+
 .switch-button .switch-button__checkbox {
+
     display: none;
+
 }
+
 .switch-button .switch-button__label {
+
     margin-top: 5px;
+
     background-color: transparent;
+
     width: 3.3rem;
+
     height: 1.5rem;
+
     border-radius: 1.5rem;
+
     display: inline-block;
+
     position: relative;
+
     box-shadow: inset 0px 0px 0px 1px var(--color-white);
+
 }
+
 .switch-button .switch-button__label:before {
+
     transition: .2s;
+
     display: block;
+
     position: absolute;
+
     width: 1.5rem;
+
     height: 1.5rem;
+
     background-color: var(--color-button);
+
     content: '';
+
     border-radius: 50%;
+
     box-shadow: inset 0px 0px 0px 1px var(--color-white);
+
 }
+
 .switch-button .switch-button__checkbox:checked + .switch-button__label {
+
     background-color: var(--color-white);
+
 }
+
 .switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+
     transform: translateX(2rem);
+
 }
+
+
 
 .txt-font-contenido{
+
     color: #fff !important;
+
     text-shadow: -1px 1px 0 transparent,
+
     1px 1px 0 transparent,
+
     1px -1px 0 transparent,
+
     -1px -1px 0 transparent !important;
+
 }
+
+
 
 .txt-mensaje{
+
     color: #fff !important;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000 !important;
+
     font-weight: 100 !important;
+
 }
+
+
 
 .txt-aviso{
+
     color: #fff !important;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000 !important;
+
     font-weight: 100 !important;
+
 }
+
+
 
 .txt-price-selected{
+
     color: #fff;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000 !important;
+
     font-weight: 100 !important;
+
 }
+
+
 
 .spinnerFinalizar {
+
     width: 3rem !important;
+
     height: 3rem !important;
+
 }
+
+
 
 .text-numero{
+
     color: #fff;
+
     text-shadow: -1px 1px 0 #000,
+
     1px 1px 0 #000,
+
     1px -1px 0 #000,
+
     -1px -1px 0 #000 !important;
+
     font-weight: 100 !important;
+
 }
+
+
+.txt-incluye {
+    color: #fff;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000 !important;
+    font-weight: 100 !important;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
+
 @media only screen and (max-width: 600px) {
+
     .card-invite .imgBox {
+
         position: absolute;
+
         display: inline-block;
+
         margin-right:auto
+
         /* margin-top: 100px; */
+
     }
+
+
 
     .card-invite .imgBox img {
+
         width: 100%;
+
         margin-top: 40px;
+
         border: 5px solid #fff;
+
     }
+
+
 
     .card-invite {
+
         width: 300px;
-        height: 600px
+
+        height: 620px
+
     }
+
+
 
     .card-invite .details {
+
         position: relative;
+
         margin-top: 150px;
-        height: 465px;
+
+        height: 478px;
+
     }
+
+
 
     .card-invite .details::before {
+
         content: "";
+
         position: absolute;
+
         left: 15px;
+
         width: 0;
+
         height: 0;
+
         top: 0;
+
         border-bottom: 10px solid transparent;
+
         border-top: 10px solid #fff;
+
         border-left: 10px solid transparent;
+
         border-right: 10px solid transparent;
+
     }
+
+
 
     .card-invite:hover .imgBox{
+
         transform: rotate(0deg);
-    }
-    
-    .modal-title {
-        font-size: 1.4em;
+
     }
 
-    .audio-content{
-        justify-content: center;
-        position: absolute;
-        top: 95%;
-        box-shadow: none;
-        overflow: hidden;
-        border-radius: 20px;
-        z-index: 1;
+    
+
+    .modal-title {
+
+        font-size: 1.4em;
+
     }
+
+
+
+    .audio-content{
+
+        justify-content: center;
+
+        position: absolute;
+
+        top: 95%;
+
+        box-shadow: none;
+
+        overflow: hidden;
+
+        border-radius: 20px;
+
+        z-index: 1;
+
+    }
+
+
 
     .audio-properties{
+
         width: 300px;
+
     }
+
+
 
     .img-metodo-pago {
+
         width: 120px;
+
         height: 120px;
+
         margin-bottom: 10px;
+
     }
+
+
 
     .img-qr-pago {
+
         width: 300px;
+
         height: auto;
+
     }
+
+
 
     .switch-button .switch-button__label {
+
         margin-top: -10px;
+
     }
+
     
+
     
+
 }
+
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
+
 @media only screen and (min-width: 600px) {
+
     .audio-content{
+
         top: 15%;
+
     }
+
 }
+
+
 
 /* Medium devices (landscape tablets, 768px and up) */
+
 @media only screen and (min-width: 768px) {
+
     .audio-content{
+
         top: 15%;
+
     }
+
 }
+
+
 
 /* Large devices (laptops/desktops, 992px and up) */
+
 @media only screen and (min-width: 992px) {
+
     .audio-content{
+
         top: 5%;
+
     }
+
 }
+
+
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
+
 @media only screen and (min-width: 1200px) {
+
     .audio-content{
+
         top: 5%;
+
     }
+
 }
 
+
+
 @media only screen and (min-width: 1400px) {
+
     .audio-content{
+
         top: 20%;
+
     }
+
 }
+
